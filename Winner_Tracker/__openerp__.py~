@@ -9,9 +9,8 @@
  #       """,
         'author': 'Apagen Solution Pvt Ltd.',
         'website': 'http://www.apagen.com',
-        'depends': [
+        'depends': ['mail',
             'base',
-            'brief_management',
     ],
     'init_xml': [
     ],

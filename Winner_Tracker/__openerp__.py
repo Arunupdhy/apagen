@@ -9,7 +9,7 @@
  #       """,
         'author': 'Apagen Solution Pvt Ltd.',
         'website': 'http://www.apagen.com',
-        'depends': [
+        'depends': ['mail',
             'base',
     ],
     'init_xml': [
