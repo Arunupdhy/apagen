@@ -6,7 +6,8 @@ class news(osv.osv):
     _columns = {
         'news_time':fields.datetime('News Time'),
         'news_headline': fields.char('News Headline'),
-        'station_ids': fields.many2one('brand', 'Station'),
+        'station_ids': fields.selection([('1', "Radio"), ('2', 'TV'), ('3', 'Digital')],
+		                         "Station", required='True'),
         'user_id': fields.many2one('res.users', 'Submitted by'),
         'creation_date':fields.datetime('Creation Date'),
     }
@@ -16,7 +17,7 @@ class news(osv.osv):
         'user_id': lambda obj, cursor, user, context: user,
     }
 	
-class brand(osv.osv):
+'''class brand(osv.osv):
 	_name = 'brand'
 	_columns = {
 		'name': fields.char("Name", required='True'),
@@ -24,5 +25,5 @@ class brand(osv.osv):
 		                         "Type", required='True'),
 		'company_id': fields.many2one('res.company', 'Company', required=True, select=1),
 		
-	}    
+	}  ''' 
     
