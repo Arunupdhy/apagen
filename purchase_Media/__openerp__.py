@@ -14,6 +14,7 @@
         'purchase_view.xml',
         'purchase_report.xml',
         #'purchase_requisition_view.xml',
+        #'abc_view.xml',
     ],
     'installable': True,
     'application': True,

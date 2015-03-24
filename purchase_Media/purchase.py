@@ -10,7 +10,6 @@ class purchase_requisition(osv.osv):
  
 
 	_columns = {
-		#'name': fields.char(required=True, copy=False, readonly=True),
 		'creation_date': fields.datetime('Creation Date',required=True),
 		#'exclusive': fields.selection([('exclusive', 'Select only one RFQ (exclusive)'), ('multiple', 'Select multiple RFQ')], 'Requisition Type', required=True, help="Select only one RFQ (exclusive):  On the confirmation of a purchase order, it cancels the remaining purchase order.\nSelect multiple RFQ:  It allows to have multiple purchase orders.On confirmation of a purchase order it does not cancel the remaining orders"""),
 		#'origin': fields.char('source document'),
