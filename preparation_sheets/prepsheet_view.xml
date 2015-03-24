@@ -47,17 +47,73 @@
                             <field name="brand_id" required="True"/>
                         </group>
                     </group>
-                	<label for="table_ids" string="Content Table"/>
-                	<field name="table_ids"/>
-		            <label for="earlier_week" string="Earlier This Week"/>
-	                <field name="earlier_week"/>
-	                <label for="later_week" string="Coming Up Later This Week"/>
-	                <field name="later_week"/>
-	                <label for="next_week" string="Coming Up Next Week"/>
-	                <field name="next_week"/>
-	                <label for="miss_today" string="What did we miss today that can be used tomorrow?"/>
-	                <field name="miss_today"/>
-                    <field name="notes" placeholder="Notes"/>
+                <!--	<label for="table_ids" string="Content Table"/>
+                	<field name="table_ids"/>-->
+                	<notebook>
+     					<page string="General">
+							<label for="earlier_week" string="Earlier This Week"/>
+							<field name="earlier_week"/>
+							<label for="later_week" string="Coming Up Later This Week"/>
+							<field name="later_week"/>
+							<label for="next_week" string="Coming Up Next Week"/>
+							<field name="next_week"/>
+							<label for="miss_today" string="What did we miss today that can be used tomorrow?"/>
+							<field name="miss_today"/>
+							<field name="notes" placeholder="Notes"/>
+						</page>
+						<page string="HOUR 1">
+							<label for="major_bit" string="Major Bit"/>
+							<field name="major_bit"/>
+							<label for="minor_bit" string="Minor Bit"/>
+							<field name="minor_bit"/>
+							<label for="filler_1" string="Filler 1"/>
+							<field name="filler_1"/>
+							<label for="filler_2" string="Filler 2"/>
+							<field name="filler_2"/>
+							<label for="phone_topic" string="Phone Topic"/>
+							<field name="phone_topic"/>
+							<field name="notes_h1" placeholder="Notes"/>
+						</page>
+						<page string="HOUR 2">
+							<label for="major_h2" string="Major Bit"/>
+							<field name="major_h2"/>
+							<label for="minor_h2" string="Minor Bit"/>
+							<field name="minor_h2"/>
+							<label for="filler_h2" string="Filler 1"/>
+							<field name="filler_h2"/>
+							<label for="filler_h2" string="Filler 2"/>
+							<field name="filler_h2"/>
+							<label for="phone_h2" string="Phone Topic"/>
+							<field name="phone_h2"/>
+							<field name="notes_h2" placeholder="Notes"/>
+						</page>
+						<page string="HOUR 3">
+							<label for="major_h3" string="Major Bit"/>
+							<field name="major_h3"/>
+							<label for="minor_h3" string="Minor Bit"/>
+							<field name="minor_h3"/>
+							<label for="filler_h3" string="Filler 1"/>
+							<field name="filler_h3"/>
+							<label for="filler_h3" string="Filler 2"/>
+							<field name="filler_h3"/>
+							<label for="phone_h3" string="Phone Topic"/>
+							<field name="phone_h3"/>
+							<field name="notes_h3" placeholder="Notes"/>
+						</page>
+						<page string="HOUR 4">
+							<label for="major_h4" string="Major Bit"/>
+							<field name="major_h4"/>
+							<label for="minor_h4" string="Minor Bit"/>
+							<field name="minor_h4"/>
+							<label for="filler_h4" string="Filler 1"/>
+							<field name="filler_h4"/>
+							<label for="filler_h4" string="Filler 2"/>
+							<field name="filler_h4"/>
+							<label for="phone_h4" string="Phone Topic"/>
+							<field name="phone_h4"/>
+							<field name="notes_h4" placeholder="Notes"/>
+						</page>
+					</notebook>
                 </sheet>                    
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
@@ -68,7 +124,7 @@
         </record>
         
         <!-- Content Table Tree View -->
-        <record id="content_table_tree" model="ir.ui.view">
+     <!--   <record id="content_table_tree" model="ir.ui.view">
             <field name="name">tree view</field>
             <field name="model">content.table</field>
             <field name="arch" type="xml">
@@ -78,7 +134,7 @@
                     <field name="content"/>
                 </tree>
             </field>
-        </record>
+        </record>-->
         
         <!-- Search View for sheet -->
 		<record id="view_sheet_form_filter_apagen" model="ir.ui.view">

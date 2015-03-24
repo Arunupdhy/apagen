@@ -6,18 +6,43 @@ class sheet(osv.osv):
     _name = "sheet"
     _inherit = ['mail.thread', 'ir.needaction_mixin']
     _columns = {
-        'table_ids': fields.one2many('content.table', 'table_id', 'Content Table'),
+        #'table_ids': fields.one2many('content.table', 'table_id', 'Content Table'),
         'sheet_no':fields.char('Prep Sheet No'),
         'date':fields.datetime('Date'),
         'show':fields.char('Show'),
         'user_id': fields.many2one('res.users', 'Presenter'),
-        'brand_id': fields.many2one('brand', 'Brand'),
+        'brand_id': fields.selection([('1', "Radio"), ('2', 'TV'), ('3', 'Digital')],
+		                         "Brand", required='True'),
         'creation_date': fields.datetime('Creation Date'),
         'day': fields.char('Creation Day'),
-        'earlier_week': fields.text('Earlier This Week'),
+        'earlier_week': fields.text('Earlier This Week', width = 40, height=2),
         'later_week': fields.text('Coming Up Later This Week'),
         'next_week': fields.text('Coming Up Next Week'),
         'miss_today': fields.text('What did we miss today that can be used tomorrow?'),
+        'major_bit': fields.text('Major Bit'),
+        'minor_bit': fields.text('Minor Bit'),
+        'filler_1': fields.text('Filler 1'),
+        'filler_2': fields.text('Filler 2'),
+        'phone_topic': fields.text('Phone Topic'),
+        'notes_h1': fields.text('NOTES'),
+        'major_h2': fields.text('Major Bit'),
+        'minor_h2': fields.text('Minor Bit'),
+        'filler_h2': fields.text('Filler 1'),
+        'filler_h2': fields.text('Filler 2'),
+        'phone_h2': fields.text('Phone Topic'),
+        'notes_h2': fields.text('NOTES'),
+        'major_h3': fields.text('Major Bit'),
+        'minor_h3': fields.text('Minor Bit'),
+        'filler_h3': fields.text('Filler 1'),
+        'filler_h3': fields.text('Filler 2'),
+        'phone_h3': fields.text('Phone Topic'),
+        'notes_h3': fields.text('NOTES'),
+        'major_h4': fields.text('Major Bit'),
+        'minor_h4': fields.text('Minor Bit'),
+        'filler_h4': fields.text('Filler 1'),
+        'filler_h4': fields.text('Filler 2'),
+        'phone_h4': fields.text('Phone Topic'),
+        'notes_h4': fields.text('NOTES'),
         'state': fields.selection([
             ('draft', 'Draft'),
             ('confirmed', 'Confirmed'),
@@ -39,7 +64,7 @@ class sheet(osv.osv):
         self.write(cr, uid, ids, {'state': 'confirmed', 'sheet_no': seq})
         return True
         
-class content_table(osv.osv):
+'''class content_table(osv.osv):
     _name = "content.table"
     _columns = {
         'table_id': fields.many2one('sheet', 'Content Table Id'),
@@ -50,5 +75,5 @@ class content_table(osv.osv):
 
     _defaults = {
         'date_time': fields.date.context_today,
-    }
+    }'''
 
