@@ -79,10 +79,10 @@
 							<field name="major_h2"/>
 							<label for="minor_h2" string="Minor Bit"/>
 							<field name="minor_h2"/>
-							<label for="filler_h2" string="Filler 1"/>
-							<field name="filler_h2"/>
-							<label for="filler_h2" string="Filler 2"/>
-							<field name="filler_h2"/>
+							<label for="filler_1h2" string="Filler 1"/>
+							<field name="filler_1h2"/>
+							<label for="filler_2h2" string="Filler 2"/>
+							<field name="filler_2h2"/>
 							<label for="phone_h2" string="Phone Topic"/>
 							<field name="phone_h2"/>
 							<field name="notes_h2" placeholder="Notes"/>
@@ -92,10 +92,10 @@
 							<field name="major_h3"/>
 							<label for="minor_h3" string="Minor Bit"/>
 							<field name="minor_h3"/>
-							<label for="filler_h3" string="Filler 1"/>
-							<field name="filler_h3"/>
-							<label for="filler_h3" string="Filler 2"/>
-							<field name="filler_h3"/>
+							<label for="filler_1h3" string="Filler 1"/>
+							<field name="filler_1h3"/>
+							<label for="filler_2h3" string="Filler 2"/>
+							<field name="filler_2h3"/>
 							<label for="phone_h3" string="Phone Topic"/>
 							<field name="phone_h3"/>
 							<field name="notes_h3" placeholder="Notes"/>
@@ -105,10 +105,10 @@
 							<field name="major_h4"/>
 							<label for="minor_h4" string="Minor Bit"/>
 							<field name="minor_h4"/>
-							<label for="filler_h4" string="Filler 1"/>
-							<field name="filler_h4"/>
-							<label for="filler_h4" string="Filler 2"/>
-							<field name="filler_h4"/>
+							<label for="filler_1h4" string="Filler 1"/>
+							<field name="filler_1h4"/>
+							<label for="filler_2h4" string="Filler 2"/>
+							<field name="filler_2h4"/>
 							<label for="phone_h4" string="Phone Topic"/>
 							<field name="phone_h4"/>
 							<field name="notes_h4" placeholder="Notes"/>
