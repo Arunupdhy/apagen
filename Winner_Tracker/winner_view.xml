@@ -115,7 +115,7 @@
 					</group>
 
 					<footer>
-						<button name="action_claim" string="Claim" type="object" class="oe_highlight"                 groups="Winner_Tracker.group_receptionist,Winner_Tracker.group_admin" />
+						<button name="action_claim" string="Claim" type="object" class="oe_highlight"/>                <!--groups="Winner_Tracker.group_receptionist,Winner_Tracker.group_admin" />-->
 						or
 						<button string="Cancel"
 								class="oe_link" special="cancel" />
