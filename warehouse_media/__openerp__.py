@@ -14,7 +14,9 @@
     'init_xml': [
     ],
     'data': [
+    	'views/report_stockpicking.xml',
         'warehouse_media_view.xml',
+    	'stock_report.xml',
         
     ],
     'demo': [],
