@@ -1,0 +1,279 @@
+<openerp>
+    <data>
+    
+        <!--Employee form view -->
+             
+             
+        <record id="hr.view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <form string="Employee">
+                    <sheet>
+                        <group>
+                        	<group width='100'>
+                        		<field name="image_medium" widget='image' class="oe_left oe_avatar" nolabel='1'/>
+                        	</group>
+                        	<group>
+                     			<div>       
+  	                          		<label for="name"  string="Middle &amp; First Name" class="oe_edit_only"/>
+  	                              	<field name="name" />
+  	                              	<label for="work_email" class="oe_edit_only"/>
+                            	  	<field name="work_email" widget="email" width="35"/>
+                           		</div>
+                           		<div>
+                    				<label for="surname" string="Last Name"/>
+                    				<field name="surname" required='1' width="35"/>
+                    				<label for="work_phone" string="work Phone" class="oe_edit_only" />
+                           			<field name="work_phone" nolabel='1' width="35"/>
+                      			</div>
+                      			<div>
+                      				<label for="category_ids" class="oe_edit_only" groups="base.group_hr_user"/>
+                            		<field name="category_ids" widget="many2many_tags" nolabel='1' placeholder="e.g. Part Time" groups="base.group_hr_user"/>
+                           		</div>
+                    		</group>
+                   	 </group>  
+                      
+                        <div class="oe_right oe_button_box" name="button_box">
+                            <!-- Put here related buttons -->
+                        </div>
+                        <notebook>
+                            <page string="Public Information">
+                                <group>
+                                    <group string="Contact Information">
+                                        <field name="address_id" on_change="onchange_address_id(address_id)"
+                                            context="{'show_address': 1, 'default_customer': False}"
+                                            options='{"always_reload": True, "highlight_first_line": True}'/>
+                                        <field name="mobile_phone"/>
+                                        <field name="work_location"/>
+                                    </group>
+                                    <group string="Position">
+                                        <field name="department_id" on_change="onchange_department_id(department_id)"/>
+                                        <field name="job_id"/>
+                                        <field name="parent_id"/>
+                                        <field name="coach_id"/>
+                                    </group>
+                                    <group string=" ">
+                                        
+                                        <field name="user_id" on_change="onchange_user(user_id)" string="Related User"
+                                            context="{'default_groups_ref': ['base.group_user']}"/>
+                                        <field name="company_id" groups="base.group_multi_company" on_change="onchange_company(company_id)"/>
+                                    </group>
+                                    
+                                </group>
+                                
+                                <!--<field name="notes" placeholder="Other Information ..." colspan="4"/>-->
+                            </page>
+                            <page string="Personal Information" groups="base.group_hr_user">
+                                <group>
+                                    <group string="Citizenship &amp; Other Info">
+                                        <field name="country_id" options='{"no_open": True}'/>
+                                        <field name="identification_id" groups="base.group_hr_user"/>
+                                        <field name="passport_id" groups="base.group_hr_user"/>
+                                        <field name="bank_account_id"/>
+                                        <field name="otherid" groups="base.group_hr_user"/>
+                                    </group>
+                                    <group string="Contact Information">
+                                        <field name="address_home_id"
+                                            context="{'show_address': 1, 'default_customer': False}"
+                                            options='{"always_reload": True, "highlight_first_line": True}'/>
+                                    </group>
+                                    <group string="Status">
+                                        <field name="gender"/>
+                                        <field name="marital"/>
+                                    </group>
+                                    <group string="Birth">
+                                        <field name="birthday"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="HR Settings" groups="base.group_hr_user">
+                                <group>
+                                    <group string="" name="active_group">
+                                      <!--  <field name="active"/>-->
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+            
+         
+          <!--              END HR EMPLOYEE FORM VIEW               -->   
+             
+    
+    
+                <!-- Employee List View -->
+        <record id="view_employee_tree_apagen" model="ir.ui.view">
+            <field name="name">hr.employee.tree</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+            <xpath expr="//tree[@string='Employees']" position="replace">
+                <tree string="Employee">
+                    <field name="surname"/>
+                    <field name="name"/>
+                    <field name="staff_no"/>
+                    <field name="work_email"/>
+                    <field name="department_id"/>
+                    <field name="section"/>
+                    <field name="job_id"/>
+                    <field name="parent_id"/>
+                    <field name="coach_id" invisible="1"/>
+                </tree>
+            </xpath>
+            </field>
+        </record>
+
+        <record id="view_employee_form_apagen" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+            
+         
+                <xpath expr="//form/sheet/div[@class='oe_right oe_button_box']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/div[@class='oe_right oe_button_box']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+             
+                <xpath expr="//field[@name='department_id']" position="replace">
+                    <field name="department_id" on_change="onchange_department_id(department_id)" required='1'/>
+                </xpath>
+                <xpath expr="//field[@name='department_id']" position="after">
+                    <field name="section"/>
+                </xpath>
+                <xpath expr="//field[@name='job_id']" position="replace">
+                    <field name="job_id" string='Job Title' domain="[('state','!=','old')]" context="{'form_view_ref': 'hr.view_hr_job_employee_form'}" required='1'/>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="replace">
+                    <field name="parent_id" required='1'/>
+                </xpath>
+                <xpath expr="//form/sheet/notebook/page/group/group[@string=' ']" position="after">
+					 <group> 
+                    	<field name='manager'/>
+                   		<field name='staff_no' required='1'/>
+                	</group>
+				</xpath>
+                    
+                <xpath expr="//page[@string='Personal Information']" position="inside">
+                    <group>
+                    <group string='Identification'>
+                        <field name='identification_id' string='National Id No' required='1'/>
+                        <field name='passport_id'/>
+                        <field name='bank_account_id'/>
+                        <field name='otherid' string='Driving License No'/>
+                        <field name='nssf_no'/>
+                        <field name='nhif_no'/>
+                        <field name='pin_no'/>
+                    </group>
+                    <group string='Contact Info'>
+                        <field name='permanent_address'/>
+                        <field name='address_home_id' string='Residential Address'/>
+                        <field name='district'/>
+                        <field name='division'/>
+                        <field name='location'/>
+                        <field name='sub_location'/>
+                        <field name='village_market'/>
+                    </group>
+                    </group>
+                </xpath>
+                <xpath expr="//group[@string='Birth']" position="replace"/>
+                <xpath expr="//group[@string='Status']" position="replace"/>
+                <xpath expr="//page[@string='Personal Information']" position="inside">
+                <group>
+                <group>
+                    <field name='gender'/>
+                    <field name='country_id' required='1'/>
+                </group>
+                <group>
+                	` <label for="birthday" string="DOB &amp; Age(Months)"/>
+                	<div>
+                    <field name='birthday' style="width: 50%%" on_change="onchange_getage_id(birthday)"/> 
+                    <field name='age' style="width: 30%%" />
+                    </div>months
+                    
+                    <field name='marital' required='1'/>
+                </group>
+                </group>
+                </xpath>
+                <xpath expr="//page[@string='Personal Information']/group/group[@string='Citizenship &amp; Other Info']" position="replace"/>
+                <xpath expr="//page[@string='Personal Information']/group/group[@string='Contact Information']" position="replace"/>
+<!--                <xpath expr="//page[@string='HR Settings']/group/group[@string='Active']/field[@name='active']" position="replace"/>
+                <xpath expr="//page[@string='HR Settings']/group/group[@name='active_group']" position="replace">
+                    <group name='active_group' string=''/>
+                </xpath>-->
+            </field>
+        </record>
+
+        <record id="hr_employee_view_form2_apagen" model="ir.ui.view">
+            <field name="name">hr.hr.employee.view.form2</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//group[@string='Contract']" position="after">
+                        <group string='Employment'>
+                            <field name='employment_type' required='1'/>
+                            <field name='employment_date' required='1'/>
+                            <field name='exit_date'/>
+                            <field name='active'/>
+                        </group>
+                    </xpath>
+                <xpath expr="//field[@name='manager']" position="replace"/>
+                <xpath expr="//field[@name='children']" position="replace"/>
+                <xpath expr="//field[@name='place_of_birth']" position="replace"/>
+            </field>
+        </record>
+
+        <!-- add visibility field to the employee form view -->
+     <!--   <record id="view_employee_form1" model="ir.ui.view">
+            <field name="name">portal_hr_employees_form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="portal_hr_employees.view_employee_form"/>
+            <field name="arch" type="xml">
+                    <field name="visibility" position="replace"/>
+                    <field name="public_info" String="Public Notes" placeholder="Here you can write information about you to be shown in the portal..." attrs='{"invisible":[("visibility", "=", "private")]}' position="replace"/>
+            </field>
+        </record> -->        
+
+      <!-- <record id="hr_holidays.view_employee_form_leave_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.leave.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+              
+               <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="%(act_hr_employee_holiday_request)d"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-calendar"
+                        groups="base.group_hr_user">
+                        <field name="leaves_count" widget="statinfo" string="Leaves"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>-->
+       <!-- <record id="view_employee_form_leave_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.leave.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+            
+            <xpath expr="//group[@string='Leaves']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+			</field>
+			</record> -->           
+
+    </data>
+</openerp>
