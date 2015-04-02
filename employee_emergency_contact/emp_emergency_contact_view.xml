@@ -6,10 +6,7 @@
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
-               <xpath expr="//form/sheet/group" position="before">
-                    <button name="payslip_button" string="Payslips" class="oe_right oe_avatar"/>
-                    <button name="leave_button" string="Leaves" class="oe_right oe_avatar"/>
-                </xpath> 
+               
                 
                 <xpath expr="//page[@string='HR Settings']" position="before">
 				    <page string="Emergency Contact">
