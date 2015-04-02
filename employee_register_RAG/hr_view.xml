@@ -22,8 +22,8 @@
                             	  	<field name="work_email" widget="email" width="35"/>
                            		</div>
                            		<div>
-                    				<label for="surname" string="Last Name"/>
-                    				<field name="surname" required='1' width="35"/>
+                    				<!--<label for="surname" string="Last Name"/>
+                    				<field name="surname" required='1' width="35"/>-->
                     				<label for="work_phone" string="work Phone" class="oe_edit_only" />
                            			<field name="work_phone" nolabel='1' width="35"/>
                       			</div>
@@ -90,7 +90,7 @@
                             <page string="HR Settings" groups="base.group_hr_user">
                                 <group>
                                     <group string="" name="active_group">
-                                      <!--  <field name="active"/>-->
+                                       <field name="active"/>
                                     </group>
                                 </group>
                             </page>
@@ -117,7 +117,7 @@
             <field name="arch" type="xml">
             <xpath expr="//tree[@string='Employees']" position="replace">
                 <tree string="Employee">
-                    <field name="surname"/>
+                    <!--<field name="surname"/>-->
                     <field name="name"/>
                     <field name="staff_no"/>
                     <field name="work_email"/>
@@ -140,6 +140,14 @@
          
                 <xpath expr="//form/sheet/div[@class='oe_right oe_button_box']" position="attributes">
                     <attribute name="invisible">True</attribute>
+                </xpath>
+                 <xpath expr="//form/sheet/notebook/page/group/group[@name='active_group']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                
+                <xpath expr="//form/sheet/group/group/div/label[@string='work Phone']" position="before">
+                   <label for="surname" string="Last Name"/>
+                    				<field name="surname" required='1' width="35"/>
                 </xpath>
                 <xpath expr="//form/sheet/div[@class='oe_right oe_button_box']" position="attributes">
                     <attribute name="invisible">True</attribute>
