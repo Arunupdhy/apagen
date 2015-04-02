@@ -8,10 +8,7 @@
             <field name="arch" type="xml">
                 
                
-                <xpath expr="//form/sheet/group" position="before">
-                    <button name="ps_button" string="Payslips" class="oe_right oe_avatar"/>
-                    <button name="l_button" string="Leaves" class="oe_right oe_avatar"/>
-                </xpath> 
+               
                 
                 <xpath expr="//page[@string='HR Settings']" position="before">
 				    <page string="Next of Kin">
