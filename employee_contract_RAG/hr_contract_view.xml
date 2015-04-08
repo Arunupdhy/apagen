@@ -1,0 +1,48 @@
+<openerp>
+    <data>
+        <!-- HR Contract view   -->
+        <record id="hr_contract_view_form_apagen" model="ir.ui.view">
+            <field name="name">hr.contract.view.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='visa_expire']" position="replace">
+                    <field name="visa_expire"/>
+                </xpath>
+                <xpath expr="//label[@string='Trial Period Duration']" position="replace">
+                    <label string="Probation Period"/>
+	            </xpath>
+            </field>
+        </record>
+
+        <!-- HR Payroll view   -->
+        <record id="hr_contract_form_inherit_apagen" model="ir.ui.view">
+            <field name="name">hr.contract.view.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_payroll.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='schedule_pay']" position="after">
+                    <field name="notice_period"/>
+                    <field name="mid_probation_date"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- HR Payroll Account view   -->
+        <record model="ir.ui.view" id="view_hr_contract_inherit_form_apagen">
+            <field name="name">hr.contract.view.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_payroll_account.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='duration_group']" position="after">
+                   <group string="Accounting">
+                        <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                        <field name="journal_id"/>
+                    </group>
+                </xpath>
+                <xpath expr="//group[@string='Accounting']" position="replace"/>
+            </field>
+        </record>
+
+    </data>
+</openerp>
