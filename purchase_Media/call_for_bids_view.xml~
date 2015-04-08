@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+    <record model="ir.ui.view" id="purchase_order_form_inherit_media">
+        <field name="name">purchase.order.form.inherit.media</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+        <field name="arch" type="xml">
+        <xpath expr="//form/sheet/div/h1/field[@name='name']" position="replace">			
+			<field name="name" required='True'/>
+		</xpath>
+		<!--<xpath expr="//form/sheet/group/group/field[@name='warehouse_id']" position="replace">			
+			<field name='ordering_date'/>
+		</xpath>-->
+		
+		<!--<xpath expr="//form/sheet/div/h1/field[@name='origin']" position="replace">			
+			<field name='origin' invisible='True'/>
+		</xpath>-->
+		
+		
+		<!--<xpath expr="//form/sheet/group/group/field[@name='date_end']" position="replace">			
+			<field name='ordering_date'/>
+		</xpath>
+		<xpath expr="//form/sheet/group/group/field[@name=''ordering_date']" position="replace">			
+			<field name='date_end'/>
+		</xpath>-->
+		
+		<!--<xpath expr="//form/sheet/div/h1/field[@name='ordering_date']" position="attributes">			
+			<attribute name="invisible">True</attribute>
+		</xpath>-->
+		<!--<xpath expr="//form/sheet/group/group/field[@name='exclusive']" position="replace">			
+			<field name='exclusive'/>
+		</xpath>
+		<xpath expr="//form/sheet/group/group/field[@name='multiple_rfq_per_supplier']" position="attributes">			
+			<attribute name="invisible">True</attribute>
+		</xpath>
+		<xpath expr="//form/sheet/group/group/field[@name='schedule_date']" position="replace">			
+			<field name='company_id'/>
+		</xpath>
+		<xpath expr="//form/sheet/group/group/field[@name='origin']" position="attributes">			
+			<attribute name="invisible">True</attribute>
+		</xpath>
+		<xpath expr="//form/sheet/group/group/field[@name='picking_type_id']" position="attributes">			
+			<attribute name="invisible">True</attribute>
+		</xpath>-->
+		
+		</field>
+		</record>
+    </data>        
+</openerp>	
+       
