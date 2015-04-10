@@ -6,6 +6,8 @@
 
 		<menuitem id="menu_rag_rack_apagen"
 			name="RACK" parent="menu_rag_radio_apagen" sequence="10" />
+		<menuitem id="menu_rag_category_apagen"
+			name="Configuration" parent="menu_rag_radio_apagen" sequence="28" />
 
         <!-- Brief Tree View -->
         <record id="view_brief_tree_apagen" model="ir.ui.view">
@@ -52,7 +54,7 @@
                     </h1>
                     <group>
                         <group>
-                            <field name="partner_id" domain="[('customer','=',True)]" required="True"/>
+                            <field name="partner_id" domain="[('customer','=',True)]" required="True" on_change="on_change_customer(partner_id)"/>
                             <field name="advertiser_id" required="True"/>
                             <!--domain="[('is_advertiser','=',True)]"-->
                             <field name="brief_date" required="True"/>
@@ -128,22 +130,34 @@
 			<field name="search_view_id" ref="view_brief_form_filter_apagen" />
 		</record>
 		
-		<!--22222222222222222222222222222222222222222222222-->
-		<record id="calendar_event_form_view_inherit" model="ir.ui.view">
-		    <field name="name">Calendar - Event Form</field>
-		    <field name="model">calendar.event</field>
-		    <field name="inherit_id" ref="calendar.view_calendar_event_form" />
-		    <field name="arch" type="xml">
-		    	<xpath expr="//form/sheet/field[@name='partner_ids']" position="after">
-					<field name="status"/>
-				</xpath>
+		<!--***********Brief.category form view-***************-->
+	<record id="view_in_brief_category_form_apagen" model="ir.ui.view">
+			<field name="name">brief</field>
+			<field name="model">brief.category</field>
+			<field name="arch" type="xml">
+				<form string="Category" version="7.0">
+				  <sheet>
+				  	<group>
+				  		<field name="name"/>
+				  	</group>
+				  </sheet>
+				</form>
 			</field>
+		</record>	
+		
+		<record id="action_category_entry" model="ir.actions.act_window">
+			<field name="name">Category</field>
+			<field name="res_model">brief.category</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
 		</record>
-        
-        
+		
         <menuitem id="menu_rag_brief_management_apagen" name="Brief"
 			action="action_brief_management" sequence="1"
-			parent="menu_rag_rack_apagen"/>        
+			parent="menu_rag_rack_apagen"/> 
+		<menuitem id="menu_category" parent="menu_rag_category_apagen"
+			action="action_category_entry"  sequence="12"/>       
                         
     </data>
 </openerp>
