@@ -10,7 +10,7 @@ class purchase_requisition(osv.osv):
  
 
 	_columns = {
-        'name': fields.char('Call for Bids Reference', required=True),
+        'name': fields.char('Call for Bids Reference'),
 		'creation_date': fields.datetime('Creation Date',required=True,readonly=True),
 		'user_id': fields.many2one('res.users', 'Responsible',required=True),
 		

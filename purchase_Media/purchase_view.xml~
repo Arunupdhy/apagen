@@ -12,48 +12,7 @@
                 <xpath expr="//form/sheet/div/h1/field[@name='name']" position="attributes">
                     <attribute name="readonly">1</attribute>
                 </xpath>
-                <xpath expr="//form/sheet/div[@class='pull-left']/h1/field[@name='origin']" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </xpath>
                 
-                <xpath expr="//form/sheet/group/group/field[@name='exclusive']" position="after">			
-					<field name='creation_date'/>
-				</xpath>
-		
-                
-               
-				
-				<xpath expr="//form/sheet/group/group/field[@name='account_analytic_id']" position="after">			
-					<field name='company_id' widget="selection"/>
-				</xpath>
-		
-                
-                
-                <xpath expr="//field[@name='user_id']" position="attributes">
-                    <attribute name="required">1</attribute>
-                </xpath>
-                <xpath expr="//form/sheet/notebook/page/tree/field[@name='product_qty']" position="after">			
-					<field name='product_uom_id'/>
-				</xpath>
-                
-                
-                
-                
-             
-            
-                
-                <xpath expr="//field[@name='multiple_rfq_per_supplier']" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </xpath>
-                <xpath expr="//field[@name='product_id']" position="attributes">
-                    <attribute name="required">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='product_qty']" position="attributes">
-                    <attribute name="required">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='product_uom_id']" position="attributes">
-                    <attribute name="required">1</attribute>
-                </xpath>
             </field>
         </record>-->
         
@@ -71,12 +30,7 @@
         </field>
     </record>-->
             
-        <!--   <xpath expr="//form/sheet/group/group/field[@name='requisition_id']" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </xpath>
-             <xpath expr="//form/sheet/group/group/field[@name='picking_type_id']" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </xpath>-->
+       
        
        
         <record id="view_purchase_order_form_inherited_apagen" model="ir.ui.view">
@@ -207,9 +161,9 @@
                     
                 </div>
                 <div>
-                    <!--<label for="name" class="oe_edit_only oe_inline"/>-->
+                    <label for="name" class="oe_edit_only oe_inline"/>
                     <h1>
-                        <field name="name" string="call for bids"/>
+                        <field name="name" string="call for bids" readonly='1'/>
                     </h1>
                 </div>
 <!--                <div class="pull-left">
@@ -226,7 +180,7 @@
                         <field name='creation_date'/>
                         <field name="account_analytic_id" colspan="2" groups="purchase.group_analytic_accounting" attrs="{'readonly': [('state','not in',('draft'))]}"/>
                       <!--  <field name="multiple_rfq_per_supplier" attrs="{'readonly': [('state','not in',('draft'))]}"/>-->
-                     	<!--<field name="company_id" groups="base.group_multi_company" widget="selection" attrs="{'readonly': [('state','not in',('draft'))]}"/>-->
+                     	<field name="company_id" groups="base.group_multi_company" widget="selection" attrs="{'readonly': [('state','not in',('draft'))]}"/>
                     </group>
                     <group>
                         <field name="date_end" attrs="{'readonly': [('state','not in',('draft'))]}"/>
@@ -234,7 +188,7 @@
                         <field name="schedule_date" attrs="{'readonly': [('state','not in',('draft'))]}"/>
                         <field name="origin" placeholder="e.g. OP0025" attrs="{'readonly': [('state','not in',('draft'))]}"/>
                         <field name="picking_type_id" widget="selection" groups="stock.group_locations" attrs="{'readonly': [('state','not in',('draft'))]}"/>
-                       <field name="company_id" groups="base.group_multi_company" widget="selection" attrs="{'readonly': [('state','not in',('draft'))]}"/>
+                       <!--<field name="company_id" groups="base.group_multi_company" widget="selection" attrs="{'readonly': [('state','not in',('draft'))]}"/>-->
                         
                     </group>
                 </group>
@@ -328,9 +282,9 @@
                 <field name='picking_type_id'/>
             </field>-->
             
-            <!--<xpath expr="//form/sheet/group/group/field[@name='requisition_id']" position="replace">
-                    <field name='picking_type_id'/>
-                </xpath>-->
+           <xpath expr="//form/sheet/tree/field[@name='date_order']" position="after">
+                    <field name='create_uid'/>
+                </xpath>
                 </form>
         </field>
     </record>
@@ -378,8 +332,9 @@
                             <!--<field name='create_uid'/>-->
                             <field name="currency_id" groups="base.group_multi_currency"/>
                             <field name="journal_id" invisible='1'/>
+                            <field name='create_uid'/>
                             <field name="payment_term_id" options="{'no_open': True, 'no_create': True}"/>
-                             <field name='create_uid'/>
+                             
                         </group>
                         <group>
                             <field name="date_order"/>
@@ -467,17 +422,25 @@
             <field name="model">purchase.requisition</field>
             <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//form/sheet/group/group/field[@name='account_analytic_id']" position="after">
-                    <field name="company_id" groups="base.group_multi_company" widget="selection" attrs="{'readonly': [('state','not in',('draft'))]}"/>
-                </xpath>
-                <xpath expr="//form/sheet/group/group/field[@name='company_id']" position="attributes">
+                               <xpath expr="//form/sheet/group/group/field[@name='company_id']" position="attributes">
                     <attribute name="required">1</attribute>
                 </xpath>
                
                  </field>
         </record>
         
-                
+   <!--                    Purchase Order  Tree View customization  -->    
+        <record id="purchase_order_tree_form_inherited_apagen" model="ir.ui.view">
+            <field name="name">purchase.order.tree</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='date_order']" position="after">
+				<field name='create_uid'/>				
+             </xpath>
+               
+                 </field>
+        </record>   
         
        
         

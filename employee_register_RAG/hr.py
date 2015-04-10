@@ -10,6 +10,7 @@ class hr_employee(osv.osv):
     _columns = {
         'name_related': fields.related('resource_id', 'name', type='char', string='First &amp; Middle Name', readonly=True, store=True),
         'surname':fields.char('Surname', size=32),
+        'name' : fields.char("First & Middle Name"),
         'job_id': fields.many2one('hr.job', 'Job Title'),
         'employment_type':  fields.selection([('permanent', "Permanent"),
                                               ('contractual', "Contractual"),
