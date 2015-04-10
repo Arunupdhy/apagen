@@ -122,7 +122,7 @@
                     <field name="staff_no"/>
                     <field name="work_email"/>
                     <field name="department_id"/>
-                    <field name="section"/>
+                    <field name="section" widget="selection"/>
                     <field name="job_id" string="Job Title"/>
                     <field name="parent_id"/>
                     <field name="coach_id" invisible="1"/>
@@ -241,6 +241,17 @@
             </field>
         </record>
 
+        <record id="department_section_menu" model="ir.actions.act_window">
+            <field name="name">Section</field>
+            <field name="res_model">dep.section</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="department_section_menu" id="section_category"
+            parent="hr.menu_hr_configuration" sequence="5" groups="base.group_no_one"/>
+        
+
         <!-- add visibility field to the employee form view -->
      <!--   <record id="view_employee_form1" model="ir.ui.view">
             <field name="name">portal_hr_employees_form</field>
@@ -281,7 +292,38 @@
                 </xpath>
 
 			</field>
-			</record> -->           
+			</record> -->   
+			<record id="view_department_form_apagen" model="ir.ui.view">
+            <field name="name">hr.department.form</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="arch" type="xml">
+             <xpath expr="//form/sheet/group/field[@name='company_id']" position="after">
+                    
+                    <field name="section_ids" required='1'>
+                    <tree>
+                    	<field name="name"/>
+                    </tree>                    
+                    </field>
+                </xpath>
+                
+                
+                	</field>
+                </record>  
+           
+           <record id="view_section_form" model="ir.ui.view">
+            <field name="name">dep.section.form</field>
+            <field name="model">dep.section</field>
+            <field name="arch" type="xml">
+                <form string="section">
+                    <sheet>
+                    	<group>
+                            <field name="name" string="Name"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>  
 
     </data>
 </openerp>
