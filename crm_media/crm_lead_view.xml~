@@ -71,6 +71,9 @@
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
             <field name="arch" type="xml">
+            	<xpath expr="//form/header/button[@name='case_mark_lost']" position="after">
+		            <button name ="" string="cancel" type="object" class="oe_highlight"/>
+                </xpath>
             	<xpath expr="//form/sheet/div/button[@name='action_schedule_meeting']" position="after">
 		            <button name ="action_quotation_send" class="oe_inline oe_stat_button" string="Compose Mail" type="object" groups="base.group_user"/>
                 </xpath>
