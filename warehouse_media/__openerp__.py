@@ -14,8 +14,12 @@
     'init_xml': [
     ],
     'data': [
+        'wizard/stock_move_history_view.xml',
+        'report/report.xml',        
+    	'views/report_stockmove.xml',
     	'views/report_stockpicking.xml',
     	'views/report_stockinventory.xml',
+        'views/report_stockvaluation.xml',    	
         'warehouse_media_view.xml',
     	'stock_report.xml',
         

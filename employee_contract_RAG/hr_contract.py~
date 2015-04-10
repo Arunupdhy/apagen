@@ -1,0 +1,21 @@
+import time
+from openerp.osv import fields, osv
+
+class hr_contract(osv.osv):
+    _inherit = 'hr.contract'
+    _description = 'Contract'
+    _columns = {
+        'trial_date_start': fields.date('Probation Period'),
+        'visa_expire': fields.date('Visa Expiry Date'),
+        'notice_period': fields.float('Notice Period (Days)'),
+        'mid_probation_date': fields.date('Mid-Probation Date'),
+    }
+
+    def get_date_end(self, cursor, user, context=None):
+        return True
+
+    def get_trial_date_end(self, cursor, user, context=None):
+        return True
+
+    def get_mid_probation_date(self, cursor, user, context=None):
+        return True

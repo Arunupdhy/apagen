@@ -6,8 +6,9 @@
     'summary': '',
     'description': """This application modifies CRM module according to media industry""",
     'author': 'Apagen Solutions Pvt. Ltd.',
-    'depends': ['crm'],
+    'depends': ['crm', 'sale'],
     'data': [
+    	'edi/sale_order_action_data.xml',
         'crm_lead_view.xml',
     ],
     'demo': [],

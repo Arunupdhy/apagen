@@ -9,12 +9,11 @@ class sheet(osv.osv):
         #'table_ids': fields.one2many('content.table', 'table_id', 'Content Table'),
         'sheet_no':fields.char('Prep Sheet No'),
         'date':fields.datetime('Date'),
-        'show':fields.char('Show'),
+        'show':fields.many2one('show.entry','Show'),
         'user_id': fields.many2one('res.users', 'Presenter'),
-        'brand_id': fields.selection([('1', "Radio"), ('2', 'TV'), ('3', 'Digital')],
-		                         "Brand", required='True'),
+        'brand_id': fields.many2one('brand', 'Brand', required=1),
         'creation_date': fields.datetime('Creation Date'),
-        'day': fields.char('Creation Day'),
+        'day': fields.char('Day'),
         'earlier_week': fields.text('Earlier This Week', width = 40, height=2),
         'later_week': fields.text('Coming Up Later This Week'),
         'next_week': fields.text('Coming Up Next Week'),
@@ -63,6 +62,7 @@ class sheet(osv.osv):
         seq = self.pool.get('ir.sequence').get(cr, uid, 'sheet') or '/'
         self.write(cr, uid, ids, {'state': 'confirmed', 'sheet_no': seq})
         return True
+        
         
 '''class content_table(osv.osv):
     _name = "content.table"

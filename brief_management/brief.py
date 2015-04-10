@@ -77,6 +77,10 @@ class brief(osv.osv):
         'state': 'draft'
     }
 
+    def on_change_customer(self, cr, uid, ids, partner_id, context=None):
+		if partner_id:
+			return {'value' : {'advertiser_id': partner_id}}	
+	
     def on_change_user(self, cr, uid, ids, user_id, context=None):
         """ When changing the user, also set a section_id or restrict section id
             to the ones user_id is member of. """

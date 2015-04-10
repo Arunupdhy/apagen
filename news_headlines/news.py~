@@ -6,8 +6,7 @@ class news(osv.osv):
     _columns = {
         'news_time':fields.datetime('News Time'),
         'news_headline': fields.char('News Headline'),
-        'station_ids': fields.selection([('1', "Radio"), ('2', 'TV'), ('3', 'Digital')],
-		                         "Station", required='True'),
+        'station_ids': fields.many2one('brand',"Station", required='True' ),
         'user_id': fields.many2one('res.users', 'Submitted by'),
         'creation_date':fields.datetime('Creation Date'),
     }
