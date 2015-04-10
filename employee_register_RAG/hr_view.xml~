@@ -14,16 +14,16 @@
                         	<group width='100'>
                         		<field name="image_medium" widget='image' class="oe_left oe_avatar" nolabel='1'/>
                         	</group>
-                        	<group>
+                        	<group style="width: 50%%">
                      			<div>       
-  	                          		<label for="name"  string="Middle &amp; First Name" class="oe_edit_only"/>
-  	                              	<field name="name" />
+  	                          		<label for="name"  string="First &amp; Middle Names" class="oe_edit_only"/>
+  	                              	<field name="name" required='1'/>
   	                              	<label for="work_email" class="oe_edit_only"/>
                             	  	<field name="work_email" widget="email" width="35"/>
                            		</div>
                            		<div>
-                    				<!--<label for="surname" string="Last Name"/>
-                    				<field name="surname" required='1' width="35"/>-->
+                    				<label for="surname" string="Surname"/>
+                    				<field name="surname" required='1' width="35"/>
                     				<label for="work_phone" string="work Phone" class="oe_edit_only" />
                            			<field name="work_phone" nolabel='1' width="35"/>
                       			</div>
@@ -117,13 +117,13 @@
             <field name="arch" type="xml">
             <xpath expr="//tree[@string='Employees']" position="replace">
                 <tree string="Employee">
-                    <!--<field name="surname"/>-->
+                    <field name="surname"/>
                     <field name="name"/>
                     <field name="staff_no"/>
                     <field name="work_email"/>
                     <field name="department_id"/>
                     <field name="section"/>
-                    <field name="job_id"/>
+                    <field name="job_id" string="Job Title"/>
                     <field name="parent_id"/>
                     <field name="coach_id" invisible="1"/>
                 </tree>
@@ -145,10 +145,10 @@
                     <attribute name="invisible">True</attribute>
                 </xpath>
                 
-                <xpath expr="//form/sheet/group/group/div/label[@string='work Phone']" position="before">
+                <!--<xpath expr="//form/sheet/group/group/div/label[@string='work Phone']" position="before">
                    <label for="surname" string="Last Name"/>
                     				<field name="surname" required='1' width="35"/>
-                </xpath>
+                </xpath>-->
                 <xpath expr="//form/sheet/div[@class='oe_right oe_button_box']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
@@ -203,11 +203,11 @@
                     <field name='country_id' required='1'/>
                 </group>
                 <group>
-                	` <label for="birthday" string="DOB &amp; Age(Months)"/>
+                	` <label for="birthday" string="DOB &amp; Age (Months)"/>
                 	<div>
                     <field name='birthday' style="width: 50%%" on_change="onchange_getage_id(birthday)"/> 
-                    <field name='age' style="width: 30%%" />
-                    </div>months
+                    <field name='age' style="width: 30%%" />months
+                    </div>
                     
                     <field name='marital' required='1'/>
                 </group>
