@@ -10,7 +10,7 @@ class hr_employee(osv.osv):
     _columns = {
         'name_related': fields.related('resource_id', 'name', type='char', string='First &amp; Middle Name', readonly=True, store=True),
         'surname':fields.char('Surname', size=32),
-        'name' : fields.char("First & Middle Name"),
+        #'name' : fields.char("First & Middle Name"),
         'job_id': fields.many2one('hr.job', 'Job Title'),
         'employment_type':  fields.selection([('permanent', "Permanent"),
                                               ('contractual', "Contractual"),
@@ -29,7 +29,7 @@ class hr_employee(osv.osv):
                                               ('divorced', "Divorced"),
                                               ('widowed', "Widowed")],
                                              "Marital Status"),
-       'section': fields.many2one('dep.section', 'Section'),
+       'section': fields.many2many('dep.section', 'r_id','p_id','c_id','Section'),
        'nssf_no': fields.char('NSSF No', size=32),
        'nhif_no': fields.char('NHIF No', size=32),
        'pin_no': fields.char('PIN No', size=32),
@@ -51,9 +51,10 @@ class hr_employee(osv.osv):
             for data in department.section_ids:
                 value1.append(data.id)
             print"---------------", value1
-        return True
-        #{'value' : {'section':value1.Name }}
-        #{'value' : {'section':value1 }}
+            if department_id=="":
+            	value1=""
+        return {'value' : {'section':value1 }}
+       
     
     def onchange_getage_id(self,cr,uid,ids,dob,context=None):
      if dob:
@@ -116,14 +117,4 @@ class department_section(osv.osv):
         'name': fields.char("Name",required=True),
     }
     
-    '''def onchange_department_id(self, cr, uid, ids, department_id, context=None):
-        value = {'parent_id': False}
-        if department_id:
-            department = self.pool.get('hr.department').browse(cr, uid, department_id)
-            value['parent_id'] = department.manager_id.id
-            value1['name'] = department.section_ids
-            print"---------------", value1
-            for department in self.browse(cr, uid, ids, context=context):
-            	name.append(employee.department.section_ids)
-        return {'value': value , 'value': value1}'''
 
