@@ -300,7 +300,7 @@
             <field name="arch" type="xml">
              <xpath expr="//form/sheet/group/field[@name='company_id']" position="after">
                     
-                    <field name="section_ids" required='1'>
+                    <field name="section_ids" required='1' widget="one2many_list">
                     <tree>
                     	<field name="name"/>
                     </tree>                    
