@@ -4,7 +4,7 @@
         'version': '1.0',
         'category': 'Media Industry',
         'sequence': 14,
-        'summary': 'Media Industry',
+        'summary': '',
 #        'description': """
  #       """,
         'author': 'Apagen Solution Pvt Ltd.',

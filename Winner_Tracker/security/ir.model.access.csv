@@ -1,10 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_winner_presenter,winner,model_winner,group_presenter,1,1,1,0
-access_winner_res_partner_access,base.res.partner,base.model_res_partner,group_presenter,1,1,1,0
+access_winner_presenter1,winner,model_winner,group_presenter1,1,1,1,0
+access_winner_res_partner_access1,base.res.partner,base.model_res_partner,group_presenter1,1,1,1,0
 
-access_winner_receptionist,winner,model_winner,group_receptionist,1,0,0,0
-access_winner_res_partner_receptionist_access,base.res.partner,base.model_res_partner,group_receptionist,1,0,0,0
+access_winner_reception,winner,model_winner,group_reception,1,0,0,0
+access_winner_res_partner_reception_access,base.res.partner,base.model_res_partner,group_reception,1,0,0,0
 
-access_winner_invoice,winner,model_winner,group_invoicing_payments,1,0,0,0
-access_winner_res_partner_invoice_access,base.res.partner,base.model_res_partner,group_invoicing_payments,1,0,0,0
+access_winner_invoice1,winner,model_winner,group_invoicing_pay,1,0,0,0
+access_winner_res_partner_invoice1_access,base.res.partner,base.model_res_partner,group_invoicing_pay,1,0,0,0

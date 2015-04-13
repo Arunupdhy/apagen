@@ -1,7 +1,7 @@
 # Copyright 2014-2015 - Apagen Solutions Pvt. Ltd.
 
 {
-    'name': 'Preparation Sheets',
+    'name': 'Preparatory Sheets',
     'version': '1.0',
     'author': 'Apagen Solutions Pvt. Ltd.',
     'category': 'Media Industry',

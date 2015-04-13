@@ -60,6 +60,7 @@ class crm_lead(osv.osv):
             'target': 'new',
             'context': ctx,
         }
+        
 
 class brand(osv.osv):
 	_name = 'brand'

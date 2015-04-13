@@ -1,10 +1,10 @@
 # Copyright 2014-2015 - Apagen Solutions Pvt. Ltd.
 {
-    'name': 'Warehouse_Media',
+    'name': 'Warehouse_RAG',
         'version': '1.0',
-        'category': 'Media Industry',
+        'category': 'Warehouse',
         'sequence': 14,
-        'summary': 'Media Industry',
+        'summary': 'This application modifies warehouse management for media industry',
 #        'description': """
  #       """,
         'author': 'Apagen Solution Pvt Ltd.',
@@ -14,9 +14,6 @@
     'init_xml': [
     ],
     'data': [
-        'wizard/stock_move_history_view.xml',
-        'report/report.xml',        
-    	'views/report_stockmove.xml',
     	'views/report_stockpicking.xml',
     	'views/report_stockinventory.xml',
         'warehouse_media_view.xml',

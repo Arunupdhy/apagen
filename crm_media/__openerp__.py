@@ -3,8 +3,8 @@
     'version': '1.0',
     'category': 'Media Industry',
     'website': 'www.apagen.com',
-    'summary': '',
-    'description': """This application modifies CRM module according to media industry""",
+    'summary': 'This application modifies CRM module according to media industry',
+  #  'description': """""",
     'author': 'Apagen Solutions Pvt. Ltd.',
     'depends': ['crm', 'sale'],
     'data': [
