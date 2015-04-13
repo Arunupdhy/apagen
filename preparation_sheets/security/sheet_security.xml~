@@ -18,19 +18,11 @@
 
         <!--  ********** Rules ************* -->
        
-        <record id="Winner_Tracker.winner_presenter_rule" model="ir.rule">
-            <field name="name">Presenter</field>
-            <field name="model_id" ref="Winner_Tracker.model_winner"/>
-            <field name="domain_force">[('presenter.id','=',user.id)]</field>
-            <field name="groups" eval="[(4,ref('Winner_Tracker.group_presenter'))]"/>
-        </record>
-       
-       <record id="prep_sheet_rule" model="ir.rule">
-            <field name="name">Receptionist</field>
-            <field name="model_id" ref="model_sheet"/>
-            <field name="domain_force">[(1,'=',1)]</field>
-            <field name="groups" eval="[(4,ref('group_program_controller'))]"/>
-        </record>
-       
+		<record model="ir.rule" id="prep_sheet_rule">
+			<field name="name">Prep Sheet Presenter</field>
+			<field name="model_id" ref="model_preparation_sheet" />
+			<field name="domain_force">[('user_id.id','=',user.id)]</field>
+			<field name="groups" eval="[(4,ref('Winner_Tracker.group_presenter'))]" />
+		</record>       
     </data>
 </openerp>
