@@ -22,8 +22,7 @@ class Winner(osv.osv):
         'no_winner': fields.boolean('No Winner'),
         }
     _defaults = {
-        'creation_date':
-        lambda *a: datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'creation_date': lambda *a: datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'promotion_date': fields.date.context_today,
         'presenter': lambda obj, cursor, user, context: user,
         'state': "unclaimed",
