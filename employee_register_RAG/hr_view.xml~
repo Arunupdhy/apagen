@@ -118,7 +118,7 @@
             <xpath expr="//tree[@string='Employees']" position="replace">
                 <tree string="Employee">
                     <field name="surname"/>
-                    <field name="name"/>
+                    <field name="name" string="First &amp; Middle Name"/>
                     <field name="staff_no"/>
                     <field name="work_email"/>
                     <field name="department_id"/>
