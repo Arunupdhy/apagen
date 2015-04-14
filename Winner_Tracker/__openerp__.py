@@ -15,8 +15,8 @@
     'init_xml': [
     ],
     'data': [
-        #'security/winner_security.xml',
-        #'security/ir.model.access.csv',
+        'security/winner_security.xml',
+        'security/ir.model.access.csv',
         'winner_view.xml',
         'winner_workflow.xml',
         
