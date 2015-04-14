@@ -16,19 +16,19 @@
                         	</group>
                         	<group style="width: 50%%">
                      			<div>       
-  	                          		<label for="name"  string="First &amp; Middle Names" class="oe_edit_only"/>
+  	                          		<h3><label for="name"  string="First &amp; Middle Names" class="oe_edit_only"/></h3>
   	                              	<field name="name" required='1'/>
-  	                              	<label for="work_email" class="oe_edit_only"/>
+  	                              <h3>	<label for="work_email" class="oe_edit_only"/></h3>
                             	  	<field name="work_email" widget="email" width="35"/>
                            		</div>
                            		<div>
-                    				<label for="surname" string="Surname"/>
+                    				<h3><label for="surname" string="Surname"/></h3>
                     				<field name="surname" required='1' width="35"/>
-                    				<label for="work_phone" string="work Phone" class="oe_edit_only" />
+                    				<h3><label for="work_phone" string="Work Phone" class="oe_edit_only" /></h3>
                            			<field name="work_phone" nolabel='1' width="35"/>
                       			</div>
                       			<div>
-                      				<label for="category_ids" class="oe_edit_only" groups="base.group_hr_user"/>
+                      				<h3><label for="category_ids" class="oe_edit_only" groups="base.group_hr_user"/></h3>
                             		<field name="category_ids" widget="many2many_tags" nolabel='1' placeholder="e.g. Part Time" groups="base.group_hr_user"/>
                            		</div>
                     		</group>
@@ -222,7 +222,7 @@
             </field>
         </record>
 
-        <record id="hr_employee_view_form2_apagen" model="ir.ui.view">
+      <record id="hr_employee_view_form2_apagen" model="ir.ui.view">
             <field name="name">hr.hr.employee.view.form2</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2"/>
