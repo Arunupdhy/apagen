@@ -15,8 +15,8 @@
 			<field name="arch" type="xml">
 				<form string="Winner" version="7.0">
 					<header>
-					<button name="prize_claimed" string="Prize Claimed" class="oe_highlight"
-							states="unclaimed" groups="Winner_Tracker.group_invoicing_payments"/>
+					<!--<button name="prize_claimed" string="Prize Claimed" class="oe_highlight"
+							states="unclaimed"/>-->
 					<field name="state" widget="statusbar" statusbar_visible="unclaimed,claimed,nowinner"
 							statusbar_colors='{"exception":"red",
 							                   "cancel":"red"}' />
@@ -118,7 +118,7 @@
 					</group>
 
 					<footer>
-						<button name="action_claim" string="Claim" type="object" class="oe_highlight"/>                <!--groups="Winner_Tracker.group_receptionist,Winner_Tracker.group_admin" />-->
+					<button name="action_claim" string="Claim" type="object" class="oe_highlight"             groups="Winner_Tracker.group_new_Receptionist"/>
 						or
 						<button string="Cancel"
 								class="oe_link" special="cancel" />
