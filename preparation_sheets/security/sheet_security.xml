@@ -13,7 +13,6 @@
         <record id="group_program_controller" model="res.groups">
                 <field name="name">Program Controller</field>
                 <field name="category_id" ref="module_category_sheet"/>
-                <field name="implied_ids" eval="[(4, ref('Winner_Tracker.group_presenter'))]"/>
         </record>
 
         <!--  ********** Rules ************* -->

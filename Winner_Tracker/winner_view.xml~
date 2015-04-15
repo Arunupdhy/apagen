@@ -24,20 +24,20 @@
 				  <sheet>
 				    <group>prize_claimed
 				    <group>
-				    	<field name="no_winner"  on_change="onchange_no_win(no_winner)"/>
-					    <field name="name" attrs="{'readonly': [('no_winner','=',True)], 'required': [('no_winner','=',False)]}"/>
-					     <field name="promotion" required="1"/>
-					    <field name="promotion_date" required="1" readonly="1"/>
-					    <field name="show" required="1"/>
-					    <field name="presenter" readonly="1"/>
+				    	<field name="no_winner"  on_change="onchange_no_win(no_winner)" attrs="{'readonly': [('state','=','claimed')]}"/>
+					    <field name="name" attrs="{'readonly': [('no_winner','=',True)], 'required': [('no_winner','=',False)], 'readonly': [('state','=','claimed')]}"/>
+					     <field name="promotion" required="1" attrs="{'readonly': [('state','=','claimed')]}"/>
+					    <field name="promotion_date" required="1" readonly="1" attrs="{'readonly': [('state','=','claimed')]}"/>
+					    <field name="show" required="1" attrs="{'readonly': [('state','=','claimed')]}"/>
+					    <field name="presenter" readonly="1" attrs="{'readonly': [('state','=','claimed')]}"/>
 					    </group>
 				    <group>
-					    <field name="prize_won" attrs="{'readonly': [('no_winner','=',True)], 'required': [('no_winner','=',False)]}"/>
-					    <field name="telephone" attrs="{'readonly': [('no_winner','=',True)], 'required': [('no_winner','=',False)]}"/>
-					    <field name="id_no" attrs="{'readonly': [('no_winner','=',True)], 'required': [('no_winner','=',False)]}"/>
-					    <field name="claim_date" readonly="1"/><!--attrs="{'readonly':
+					    <field name="prize_won" attrs="{'readonly': [('no_winner','=',True)], 'required': [('no_winner','=',False)], 'readonly': [('state','=','claimed')]}"/>
+					    <field name="telephone" attrs="{'readonly': [('no_winner','=',True)], 'required': [('no_winner','=',False)], 'readonly': [('state','=','claimed')]}"/>
+					    <field name="id_no" attrs="{'readonly': [('no_winner','=',True)], 'required': [('no_winner','=',False)], 'readonly': [('state','=','claimed')]}"/>
+					    <field name="claim_date" readonly="1" attrs="{'readonly': [('state','=','claimed')]}"/><!--attrs="{'readonly':
                                         [('state','in',('claimed'))]}"/-->
-					    <field name="creation_date" required="1" readonly="1"/>
+					    <field name="creation_date" required="1" readonly="1" attrs="{'readonly': [('state','=','claimed')]}"/>
 				    </group>
 				   </group>
 				  </sheet>
