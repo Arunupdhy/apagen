@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report auto="False" id="report_time_order" model="time.order" name="time.order"
+                rml="sales_extension_RAG/report/time_order.rml" string="Time Order"
+                usage="default"/>
+
+        <report auto="False" id="report_space_order" model="space.order" name="space.order"
+                rml="sales_extension_RAG/report/space_order.rml" string="Space Order"
+                usage="default"/>
+    </data>
+</openerp>
