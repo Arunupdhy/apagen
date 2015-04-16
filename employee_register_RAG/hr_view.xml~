@@ -16,19 +16,19 @@
                         	</group>
                         	<group style="width: 50%%">
                      			<div>       
-  	                          		<h3><label for="name"  string="First &amp; Middle Names" class="oe_edit_only"/></h3>
+  	                          		<h3><label for="name"  string="First &amp; Middle Names" /></h3>
   	                              	<field name="name" required='1'/>
-  	                              <h3>	<label for="work_email" class="oe_edit_only"/></h3>
+  	                              <h3>	<label for="work_email" /></h3>
                             	  	<field name="work_email" widget="email" width="35"/>
                            		</div>
                            		<div>
                     				<h3><label for="surname" string="Surname"/></h3>
                     				<field name="surname" required='1' width="35"/>
-                    				<h3><label for="work_phone" string="Work Phone" class="oe_edit_only" /></h3>
+                    				<h3><label for="work_phone" string="Work Phone"  /></h3>
                            			<field name="work_phone" nolabel='1' width="35"/>
                       			</div>
                       			<div>
-                      				<h3><label for="category_ids" class="oe_edit_only" groups="base.group_hr_user"/></h3>
+                      				<h3><label for="category_ids"  groups="base.group_hr_user"/></h3>
                             		<field name="category_ids" widget="many2many_tags" nolabel='1' placeholder="e.g. Part Time" groups="base.group_hr_user"/>
                            		</div>
                     		</group>
