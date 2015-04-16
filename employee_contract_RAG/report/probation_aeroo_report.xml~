@@ -2,7 +2,11 @@
 <openerp>
     <data>
         <record id="probation_report_extended_aeroo_xls" model="ir.actions.report.xml">
+<<<<<<< HEAD
             <field name="name">Probationer’s Report</field>
+=======
+            <field name="name">Probationer Report</field>
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
             <field name="type">ir.actions.report.xml</field>
             <field name="model">hr.contract</field>
             <field name="report_name">probation_aeroo_report_xls</field>

@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 from report import report_sxw
 from datetime import datetime
 import tools
+=======
+from openerp.report import report_sxw
+from datetime import datetime
+import openerp.tools
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 
 class Parser(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context=None):

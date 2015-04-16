@@ -9,13 +9,21 @@
     'website': 'http://www.apagen.com',
     'summary': '',
     'description': """This application extends the functionality of Employee Contract""",
+<<<<<<< HEAD
     'depends': ['hr_contract', 'hr_contract_init', 'hr_contract_reference', 'hr_payroll_account'],
+=======
+    'depends': ['hr_contract', 'hr_contract_init', 'hr_contract_reference'],
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
     'data': [
         'hr_contract_view.xml',
         'hr_contract_template.xml',
         'hr_contract_scheduler.xml',
         'wizard/probation_period_wiz_view.xml',
+<<<<<<< HEAD
         'report/probation_aeroo_report.xml', 
+=======
+#        'report/probation_aeroo_report.xml', 
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
     ],
     'installable': True,
     'application': True,

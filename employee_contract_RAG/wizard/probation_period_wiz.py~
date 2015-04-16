@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from openerp.osv import osv, fields
+<<<<<<< HEAD
 import tools
 from tools.translate import _
+=======
+import openerp.tools
+from openerp.tools.translate import _
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 from cStringIO import StringIO
 import base64
 import xlwt

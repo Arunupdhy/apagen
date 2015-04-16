@@ -10,12 +10,40 @@ class hr_contract(osv.osv):
     _description = 'Contract'
     _inherit = ['mail.thread', 'hr.contract', 'ir.needaction_mixin']
     _columns = {
+<<<<<<< HEAD
+=======
+    	'name': fields.char('Contract Reference'),
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
         'trial_date_start': fields.date('Probation Period'),
         'visa_expire': fields.date('Visa Expiry Date'),
         'notice_period': fields.float('Notice Period (Days)'),
         'mid_probation_date': fields.date('Mid-Probation Date'),
+<<<<<<< HEAD
     }
     
+=======
+        'joining_date': fields.date("Joining Date"),
+        'status': fields.selection([('on_probation',"On Probation"),
+        									  ('confirmed', "Confirmed"),
+                                              ('terminated', "Terminated")],
+                                             "Status"),
+		'status1': fields.selection([('on_probation',"On Probation"),
+        									  ('confirmed', "Confirmed"),
+                                              ('terminated', "Terminated")],
+                                             "Status"),
+    }
+    
+    def onchange_joingdate(self, cr, uid, ids, employee_id, context=None):
+        if employee_id:
+            date = self.pool.get('hr.employee').browse(cr, uid, employee_id)
+            print date
+            print date.employment_date
+            return {'value' : {'joining_date':date.employment_date }}
+    
+    def onchange_status(self, cr, uid, ids, status, context=None): 
+        if status:
+            return {'value' : {'status1':status }}
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 
     def get_date_end(self, cursor, user, context=None):
         date_today = datetime.date.today()
