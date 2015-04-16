@@ -261,9 +261,9 @@
                 <field name='picking_type_id'/>
             </field>-->
             
-           <xpath expr="//form/sheet/tree/field[@name='date_order']" position="after">
+           <!--<xpath expr="//form/sheet/tree/field[@name='date_order']" position="after">
                     <field name='create_uid'/>
-                </xpath>
+                </xpath>-->
                 </form>
         </field>
     </record>
@@ -408,7 +408,7 @@
                  </field>
         </record>
         
-   <!--                    Purchase Order  Tree View customization  -->    
+   <!--                   Purchase Order  Tree View customization  -->    
         <record id="purchase_order_tree_form_inherited_apagen" model="ir.ui.view">
             <field name="name">purchase.order.tree</field>
             <field name="model">purchase.order</field>
