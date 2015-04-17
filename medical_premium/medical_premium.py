@@ -25,7 +25,7 @@ class Medical_Premium(osv.osv):
                 'department_id':fields.many2one('hr.department','Department',required=True),
                 'company_id':fields.many2one('res.company','Company',required=True),
                 'request_date':fields.date('Request Date',required=True),
-                #'department_table':fields.one2many(''),
+               # 'dependents_table':fields.one2many('dependents.table','dep_table','Department Table'),
                 'date_of_cover':fields.date('Effective Date of Cover',required=True),
                 'premium':fields.float('Premium Amount',required=True),
                 'recovery':fields.float('Recovery Tenure(Months)',required=True),
@@ -53,11 +53,16 @@ class Medical_Premium(osv.osv):
         })
         return super(Medical_Premium, self).copy(cr, uid, id, default, context=context)
     def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
-        emp_read = self.pool.get('hr.employee').read(cr, uid, employee_id, ['department_id','company_id'], context=context)
+        '''emp_read = self.pool.get('hr.employee').read(cr, uid, employee_id, ['department_id','company_id'], context=context)
         res = {
-               'department_id':emp_read.get('department_id'),
+               'department_id':emp_read.get('department_id') and emp_read.get('department_id')[0],
                'company_id':emp_read.get('company_id') and emp_read.get('company_id')[0],
-                }
+                }'''
+        emp_read = self.pool.get('hr.employee').browse(cr, uid, employee_id)        
+        res = {
+               'department_id':emp_read.department_id,
+               'company_id':emp_read.company_id,
+                }        
         return {'value':res}
     
     def state_draft(self, cr, uid, ids, context=None):
@@ -83,4 +88,15 @@ class Medical_Premium(osv.osv):
     def state_confirmed(self, cr, uid, ids, context=None):
         self.write(cr, uid, ids, {'state':'confirmed'}, context=context)
         return True
+        
+       
+       
+'''class Medical_Premium(osv.osv):
+    _name = 'dependents.table'
+    
+    _columns = {
+                'dep_table': fields.many2one('medical.premium',"Department Table"),
+                
+                }'''
+  
     
