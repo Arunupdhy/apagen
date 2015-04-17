@@ -53,11 +53,7 @@ class Medical_Premium(osv.osv):
         })
         return super(Medical_Premium, self).copy(cr, uid, id, default, context=context)
     def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
-        '''emp_read = self.pool.get('hr.employee').read(cr, uid, employee_id, ['department_id','company_id'], context=context)
-        res = {
-               'department_id':emp_read.get('department_id') and emp_read.get('department_id')[0],
-               'company_id':emp_read.get('company_id') and emp_read.get('company_id')[0],
-                }'''
+        
         emp_read = self.pool.get('hr.employee').browse(cr, uid, employee_id)        
         res = {
                'department_id':emp_read.department_id,
