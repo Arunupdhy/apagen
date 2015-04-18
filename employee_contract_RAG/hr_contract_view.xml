@@ -6,7 +6,7 @@
             <field name="model">hr.contract</field>
             <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
             <field name="arch" type="xml">
-	            <xpath expr="//sheet" position="before">
+               <xpath expr="//sheet" position="before">
 	            <header>
 	            	<field name="status1" widget="statusbar" statusbar_visible="on_probation,confirmed,terminated" statusbar_colors='{"blue"}'/>
 	            </header>
