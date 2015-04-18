@@ -25,7 +25,7 @@ class Medical_Premium(osv.osv):
                 'department_id':fields.many2one('hr.department','Department',required=True),
                 'company_id':fields.many2one('res.company','Company',required=True),
                 'request_date':fields.date('Request Date',required=True),
-               # 'dependents_table':fields.one2many('dependents.table','dep_table','Department Table'),
+                'dependents_table':fields.one2many('dep.table','dpmn_t',"Dependents Table"),
                 'date_of_cover':fields.date('Effective Date of Cover',required=True),
                 'premium':fields.float('Premium Amount',required=True),
                 'recovery':fields.float('Recovery Tenure(Months)',required=True),
@@ -53,7 +53,11 @@ class Medical_Premium(osv.osv):
         })
         return super(Medical_Premium, self).copy(cr, uid, id, default, context=context)
     def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
-        
+        '''emp_read = self.pool.get('hr.employee').read(cr, uid, employee_id, ['department_id','company_id'], context=context)
+        res = {
+               'department_id':emp_read.get('department_id') and emp_read.get('department_id')[0],
+               'company_id':emp_read.get('company_id') and emp_read.get('company_id')[0],
+                }'''
         emp_read = self.pool.get('hr.employee').browse(cr, uid, employee_id)        
         res = {
                'department_id':emp_read.department_id,
@@ -87,12 +91,13 @@ class Medical_Premium(osv.osv):
         
        
        
-'''class Medical_Premium(osv.osv):
-    _name = 'dependents.table'
-    
+class Dependents_Tables(osv.osv):
+    _name = 'dep.table'
+    _rec_name= 'name_id'
     _columns = {
-                'dep_table': fields.many2one('medical.premium',"Department Table"),
+                'dpmn_t': fields.many2one("medical.premium","REFRENCES"),
+                'name_id': fields.char("Name"),
+                }
                 
-                }'''
   
     
