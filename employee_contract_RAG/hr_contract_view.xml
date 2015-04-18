@@ -6,11 +6,14 @@
             <field name="model">hr.contract</field>
             <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
             <field name="arch" type="xml">
-<<<<<<< HEAD
-=======
+
+
+
             <!--<xpath expr="//page[@name='information']" position="replace">
                     <label string="Probation Period"/>
 	            </xpath>-->
+
+
 	            <xpath expr="//sheet" position="before">
 	            <header>
 	            	<field name="status1" widget="statusbar" statusbar_visible="on_probation,confirmed,terminated" statusbar_colors='{"blue"}'/>
@@ -29,17 +32,17 @@
                 <xpath expr="//field[@name='employee_id']" position="replace">
                     <field name="employee_id" on_change="onchange_joingdate(employee_id)" />
                 </xpath>
->>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
+
                 <xpath expr="//field[@name='visa_expire']" position="replace">
                     <field name="visa_expire"/>
                 </xpath>
                 <xpath expr="//label[@string='Trial Period Duration']" position="replace">
                     <label string="Probation Period"/>
 	            </xpath>
-<<<<<<< HEAD
+
             </field>
         </record>
-=======
+
 	            <xpath expr="//page[@name='information']" position="replace">
                     <page string="Information" name="information">
                             <group>
@@ -89,7 +92,7 @@
             </field>
         </record>
         
->>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
+
 
         <!-- HR Payroll view   -->
         <record id="hr_contract_form_inherit_apagen" model="ir.ui.view">
@@ -100,33 +103,33 @@
                  <xpath expr="//field[@name='schedule_pay']" position="after">
                     <field name="notice_period"/>
                     <field name="mid_probation_date"/>
-<<<<<<< HEAD
+
                 </xpath>
-=======
+
                     <field name="joining_date"/>
                 </xpath>
                 
                 
->>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
+
             </field>
         </record>
 
         <!-- HR Payroll Account view   -->
-<<<<<<< HEAD
+
         <record model="ir.ui.view" id="view_hr_contract_inherit_form_apagen">
             <field name="name">hr.contract.view.form.inherit</field>
             <field name="model">hr.contract</field>
             <field name="inherit_id" ref="hr_payroll_account.hr_contract_form_inherit"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='duration_group']" position="after">
-=======
+
    <!--   <record model="ir.ui.view" id="view_hr_contract_inherit_form_apagen">
             <field name="name">hr.contract.view.form.inherit</field>
             <field name="model">hr.contract</field>
             <field name="inherit_id" ref="hr_payroll.hr_contract_form_inherit"/>
             <field name="arch" type="xml">
                 <xpath expr="//group/field[@name='advantages']" position="after">
->>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
+
                    <group string="Accounting">
                         <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
                         <field name="journal_id"/>
@@ -134,12 +137,12 @@
                 </xpath>
                 <xpath expr="//group[@string='Accounting']" position="replace"/>
             </field>
-<<<<<<< HEAD
+
         </record>
-=======
+
         </record>-->
         
->>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
+
 
     </data>
 </openerp>

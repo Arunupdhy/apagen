@@ -26,6 +26,7 @@
                             <field name="department_id" attrs="{'readonly': [('state','!=', 'draft')]}"/>
                             <field name="company_id" attrs="{'readonly': [('state','!=', 'draft')]}" />
                             <field name="request_date" readonly="1"/>
+                            <field name="dependents_table" widget="many2many_tags"/>
                         </group>
                         <group>
                             <field name="date_of_cover"/>
@@ -34,10 +35,10 @@
                             <field name="recovery_date"/>
                         </group>
                     </group>
-                    <notebook>
+                  <!--  <notebook>
                         <page string="Dependants Table">
                         </page>
-                    </notebook>
+                    </notebook>-->
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
@@ -63,6 +64,20 @@
               </p>
             </field>
         </record>
+        
+        <record id="view_dep_form" model="ir.ui.view">
+            <field name="name">dep.section.form</field>
+            <field name="model">dep.table</field>
+            <field name="arch" type="xml">
+                <form string="Dependents Table">
+                    <sheet>
+                    	<group>
+                            <field name='name_id'/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>  
         <menuitem action="open_view_meedical_premium_request_list" id="menu_medical_premium_request" sequence="4" parent="hr.menu_hr_main"/>
     </data>
 </openerp>
