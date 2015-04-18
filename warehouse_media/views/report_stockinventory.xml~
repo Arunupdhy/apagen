@@ -44,7 +44,7 @@
                                 <tr t-foreach="o.line_ids" t-as="line">
                                     <td><span t-field="line.location_id"/></td>
                                     <td><span t-field="line.product_id"/></td>
-                                    <td><span/></td>
+                                    <td><span t-field="line.theoretical_qty"/></td>
                                     <td><span t-field="line.product_qty"/> <span t-field="line.product_uom_id" groups="product.group_uom"/></td>
                                 </tr>
                                 <tr>
