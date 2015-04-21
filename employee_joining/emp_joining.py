@@ -34,15 +34,24 @@ class Joining(osv.osv):
 		'joining_date': datetime.datetime.now(),
         #'state': 'in_progress',
 	    }
-	def draf(self,cr,uid,ids,context=None):
-		print"--------------one"
-		self.write(cr, uid,ids,{'state':'draft'},context=context)
-		return True
-		
-	def state_in_progress(self, cr, uid, ids, context=None):
+	    
+	def create(self, cr, uid, vals, context=None):
+		if vals.get('emp_joining_ref','/')=='/':
+			vals['emp_joining_ref'] = self.pool.get('ir.sequence').get(cr, uid, 'joining') or '/'
+			return super(Joining, self).create(cr, uid, vals, context=context)
+    
+	def copy(self, cr, uid, id, default=None, context=None):
+		if not default:
+			default = {}
+		default.update({
+			'state': 'in_progress',
+			'emp_joining_ref': self.pool.get('ir.sequence').get(cr, uid, 'medical.premium'),
+})    
+	
+	'''def state_in_progress(self, cr, uid, ids, context=None):
 		print"--------------two"
-		#self.write(cr,uid, ids, {'state':'in_progress'}, context=context)
-		self.write(cr, uid, ids, {'emp_joining_ref':self.pool.get('ir.sequence').get(cr, uid, 'joining') or '/'},context=context)
+		self.write(cr,uid, ids, {'state':'in_progress'}, context=context)
+		#self.write(cr, uid, ids, {'emp_joining_ref':self.pool.get('ir.sequence').get(cr, uid, 'joining') or '/'},context=context)
 		return True
 	
 	def state_coo_aproval(self,cr,uid, ids, context=None):
@@ -62,7 +71,28 @@ class Joining(osv.osv):
 	def state_close(self, cr, uid, ids, context=None):
 		print"--------------six"
 		self.write(cr, uid, ids, {'state': 'closed'}, context=context)
+		return True'''
+		
+	def mymod_inprogress(self, cr, uid, ids):
+		self.write(cr, uid, ids, { 'state' : 'in_progress' })
 		return True
+
+	def mymod_aproval(self, cr, uid, ids):
+		self.write(cr, uid, ids, { 'state' : 'w_c_a' })
+		return True
+
+	def mymod_induction(self, cr, uid, ids):
+		self.write(cr, uid, ids, { 'state' : 'induction' })
+		return True
+
+	def mymod_close(self, cr, uid, ids):
+		self.write(cr, uid, ids, { 'state' : 'closed' })
+		return True
+		
+
+	'''def mymod_lost(self, cr, uid, ids):
+		self.write(cr, uid, ids, { 'state' : 'lost' })
+		return True'''
 		
 			 	 
 

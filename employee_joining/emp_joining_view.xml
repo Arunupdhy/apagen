@@ -7,10 +7,10 @@
             <field name="arch" type="xml">
                 <form string="Joining Request" version="7.0">
                 <header>
-	            		<button name="state_coo_aproval" string="Submit for COO Approval"  states="in_progress"/>
-	            		<button name="state_induction" string="Approve"  states="w_c_a" class="oe_highlight"/>
-	            		<button name="state_close" string="Close"  states="w_c_a,induction" class="oe_highlight"/>
-	            		<button name="state_reset" string="Reset" type="object" states="w_c_a,induction" class="oe_highlight"/>
+	            		<button name="mymod_aproval" string="Submit for COO Approval"  states="in_progress"/>
+	            		<button name="mymod_induction" string="Approve"  states="w_c_a" class="oe_highlight"/>
+	            		<button name="mymod_close" string="Close"  states="induction" class="oe_highlight"/>
+	            		<!--<button name="mymod_reset" string="Reset" type="object" states="w_c_a,induction" class="oe_highlight"/>-->
 	            		<field name="state" widget="statusbar" statusbar_visible="in_progress,w_c_a,induction,closed" statusbar_colors='{"blue"}'/>
 	            	</header>
   
@@ -61,7 +61,7 @@
         </record>
 
         <record id="open_view_joining_request_list" model="ir.actions.act_window">
-            <field name="name">joining Request</field>
+            <field name="name">Joining Request</field>
             <field name="res_model">joining</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
