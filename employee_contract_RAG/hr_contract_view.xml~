@@ -11,6 +11,7 @@
             <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
             <field name="arch" type="xml">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <!-- <xpath expr="//field[@name='schedule_pay']" position="after">
                     
                 </xpath>-->
@@ -19,6 +20,9 @@
                     <label string="Probation Period"/>
 	            </xpath>-->
 	            <xpath expr="//sheet" position="before">
+=======
+               <xpath expr="//sheet" position="before">
+>>>>>>> update_module
 	            <header>
 	            	<field name="status1" widget="statusbar" statusbar_visible="on_probation,confirmed,terminated" statusbar_colors='{"blue"}'/>
 	            </header>
@@ -30,9 +34,7 @@
 	            <xpath expr="//form/sheet/group/group/field[@name='type_id']" position="after">
                     <field name="status" on_change="onchange_status(status)"/>
                 </xpath>
-               <!-- <xpath expr="//form/sheet/notebook/page/group/group/field[@name='advantages']" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </xpath>-->
+              
                 <xpath expr="//field[@name='employee_id']" position="replace">
                     <field name="employee_id" on_change="onchange_joingdate(employee_id)" />
                 </xpath>
