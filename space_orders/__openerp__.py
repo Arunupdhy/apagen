@@ -8,8 +8,8 @@
     'author': 'Apagen Solutions Pvt. Ltd.',
     'depends': ['sale', 'brief_management', 'time_orders'],
     'data': [
-        'security/ir.model.access.csv',
         'security/space_order_security.xml',
+        'security/ir.model.access.csv',
         'space_order_view.xml',
         'space_order_sequence.xml',
         'space_order_report.xml',
