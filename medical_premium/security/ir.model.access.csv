@@ -1,0 +1,7 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_employee_medical_premium_officer","medical.premium","model_medical_premium","base.group_hr_user",1,1,1,1
+"access_employee_medical_premium_manager","medical.premium","model_medical_premium","base.group_hr_manager",1,1,1,1
+"access_employee_medical_premium_director","medical.premium","model_medical_premium","hr_security.group_hr_director",1,1,1,
+"access_employee_dep_table_officer","dep_table","model_dep_table","base.group_hr_user",1,1,1,1
+"access_employee_dep_table_manager","dep_table","model_dep_table","base.group_hr_manager",1,1,1,1
+"access_employee_dep_table_director","dep_table","model_dep_table","hr_security.group_hr_director",1,1,1,
