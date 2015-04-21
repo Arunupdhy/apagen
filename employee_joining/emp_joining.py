@@ -15,8 +15,8 @@ class Joining(osv.osv):
     
     
 	_columns = {
-		'status': fields.selection([('in_progress',"In Progress"),
-        									  ('w_c_a', "Waiting COO Approval"),('induction', "Induction,"),('closed',"Closed")],"Status"),
+		'state': fields.selection([('in_progress',"In Progress"),
+        									  ('w_c_a', "Waiting COO Approval"),('induction', "Induction"),('closed',"Closed")],"Status"),
 		'employee_id':fields.many2one('hr.employee','Employee',required=True),
 		'job_Position':fields.many2one('hr.job','Job Position',required=True),
 		'department_id':fields.many2one('hr.department','Department',required=True),
@@ -32,15 +32,40 @@ class Joining(osv.osv):
 	}
 	_defaults = {
 		'joining_date': datetime.datetime.now(),
-		#'emp_joining_ref':('ir.sequence').get(cr, uid, 'joining'),
-		#'emp_joining_ref':"/"
-    }
-	'''def create(self, cr, user, vals, context=None):
-		vals['emp_joining_ref'] =\
-		self.pool.get('ir.sequence').get(cr, user,'joining')
-		return super(Joining, self).create(self, cr, user, vals, context)'''
-    
-    
+        #'state': 'in_progress',
+	    }
+	def draf(self,cr,uid,ids,context=None):
+		print"--------------one"
+		self.write(cr, uid,ids,{'state':'draft'},context=context)
+		return True
+		
+	def state_in_progress(self, cr, uid, ids, context=None):
+		print"--------------two"
+		#self.write(cr,uid, ids, {'state':'in_progress'}, context=context)
+		self.write(cr, uid, ids, {'emp_joining_ref':self.pool.get('ir.sequence').get(cr, uid, 'joining') or '/'},context=context)
+		return True
+	
+	def state_coo_aproval(self,cr,uid, ids, context=None):
+		print"--------------three"
+		self.write(cr,uid, ids, {'state':'w_c_a'}, context=context)
+		return True
+	
+	def state_induction(self, cr, uid, ids, context=None):
+		print"--------------four"
+		self.write(cr, uid, ids, {'state': 'induction'}, context=context)
+		return True
+
+	def state_reset(self, cr, uid, ids, context=None):
+		print"--------------five"
+		self.write(cr, uid, ids, {'state': 'in_progress'}, context=context)
+
+	def state_close(self, cr, uid, ids, context=None):
+		print"--------------six"
+		self.write(cr, uid, ids, {'state': 'closed'}, context=context)
+		return True
+		
+			 	 
+
     
 class Required_Items(osv.osv):
 	_name = 'req.items'
@@ -61,10 +86,7 @@ class Required_Items(osv.osv):
 
 	def onchange_status(self, cr, uid, ids, status, context=None): 
 		if status:
-			return {'value' : {'status1':status}
-        #return True
-		}
-		
+			return {'value' : {'status1':status}}
 	
 class Induction(osv.osv):
 	_name = 'induction'

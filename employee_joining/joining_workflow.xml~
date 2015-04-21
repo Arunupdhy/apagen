@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record model="workflow" id="wkf_joining">
+        <field name="name">joining.wkf</field>
+        <field name="osv">joining</field>
+        <field name="on_create">True</field>
+    </record>
+<!-- ==============================================================-->
+	<record model="workflow.activity" id="act_joining_in_draft">
+        <field name="wkf_id" ref="wkf_joining"/>
+        <field name="name">In Progress</field>
+        <field name="flow_start">True</field>
+    </record>
+    
+    <record model="workflow.activity" id="act_joining_in_progress">
+        <field name="wkf_id" ref="wkf_joining"/>
+        <field name="name">In Progress</field>
+        <field name="flow_start">True</field>
+    </record>
+    
+    <record model="workflow.activity" id="act_joining_coo_aproval">
+        <field name="wkf_id" ref="wkf_joining"/>
+        <field name="name">In COO Approval</field>
+        <field name="kind">function</field>
+        <field name="action">state_coo_aproval()</field>
+    </record>
+
+    <record model="workflow.activity" id="act_joining_induction">
+        <field name="wkf_id" ref="wkf_joining" />
+        <field name="name">Inducton</field>
+        <field name="kind">function</field>
+        <field name="action">state_induction()</field>
+    </record>
+    
+    <record model="workflow.activity" id="act_joining_close">
+        <field name="wkf_id" ref="wkf_joining" />
+        <field name="name">Close</field>
+        <field name="kind">function</field>
+        <field name="action">state_close()</field>
+    </record>
+    
+    <record model="workflow.activity" id="act_joinig_reset">
+        <field name="wkf_id" ref="wkf_joining" />
+        <field name="name">Reset</field>
+        <field name="kind">function</field>
+        <field name="action">state_reset()</field>
+    </record>
+<!-- ==============================================================
+===================================================================-->
+	<record model="workflow.transition" id="tr_progress_to_draft">
+	    <field name="act_from" ref="act_joining_in_draft" />
+	    <field name="act_to" ref="act_joining_in_progress" />
+	    <field name="signal">state_inprogress</field>
+	</record>
+	<record model="workflow.transition" id="tr_progress_to_coo_approval">
+	    <field name="act_from" ref="act_joining_in_progress" />
+	    <field name="act_to" ref="act_joining_coo_aproval" />
+	    <field name="signal">state_coo_aproval</field>
+	</record>
+	<record model="workflow.transition" id="tr_coo_approval_to_progress">
+	    <field name="act_from" ref="act_joining_coo_aproval" />
+	    <field name="act_to" ref="act_joining_in_progress" />
+	    <field name="signal">state_reset</field>
+	</record>
+	
+	<record model="workflow.transition" id="tr_coo_approval_to_induction">
+	    <field name="act_from" ref="act_joining_coo_aproval" />
+	    <field name="act_to" ref="act_joining_induction" />
+	    <field name="signal">state_induction</field>
+	</record>
+	<!--<record model="workflow.transition" id="tr_induction_to_progress">
+	    <field name="act_from" ref="act_joining_coo_aproval" />
+	    <field name="act_to" ref="act_joining_in_progress" />
+	    <field name="signal">state_reset</field>
+	</record>-->
+	
+	<record model="workflow.transition" id="tr_induction_to_close">
+	    <field name="act_from" ref="act_joining_induction" />
+	    <field name="act_to" ref="act_joining_close" />
+	    <field name="signal">state_close</field>
+	</record>
+	
+</data>
+</openerp>
