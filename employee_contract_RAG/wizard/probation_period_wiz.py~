@@ -7,6 +7,10 @@ from tools.translate import _
 =======
 import openerp.tools
 from openerp.tools.translate import _
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
 from cStringIO import StringIO
 import base64

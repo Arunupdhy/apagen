@@ -13,6 +13,10 @@ class hr_contract(osv.osv):
 <<<<<<< HEAD
 =======
     	'name': fields.char('Contract Reference'),
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
         'trial_date_start': fields.date('Probation Period'),
         'visa_expire': fields.date('Visa Expiry Date'),
@@ -43,6 +47,10 @@ class hr_contract(osv.osv):
     def onchange_status(self, cr, uid, ids, status, context=None): 
         if status:
             return {'value' : {'status1':status }}
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
 
     def get_date_end(self, cursor, user, context=None):

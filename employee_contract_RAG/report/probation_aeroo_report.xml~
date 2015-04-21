@@ -6,6 +6,10 @@
             <field name="name">Probationer’s Report</field>
 =======
             <field name="name">Probationer Report</field>
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
             <field name="type">ir.actions.report.xml</field>
             <field name="model">hr.contract</field>

@@ -22,6 +22,10 @@
             <field name="email_from">${(user.email or '')|safe}</field>
             <field name="email_to">${(user.email or '')|safe}</field>
             <field name="model_id" ref="employee_contract_RAG.model_hr_contract"/>
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
@@ -66,6 +70,10 @@
     </div>
 =======
     <p>Contract "${object.name}" for "${object.employee_id.name}" is due to expire on "${object.date_end}". Please take required action.</p>    
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
 </div>            ]]></field>
         </record>
@@ -88,6 +96,10 @@
             <field name="email_from">${(user.email or '')|safe}</field>
             <field name="email_to">${(user.email or '')|safe}</field>            
             <field name="model_id" ref="employee_contract_RAG.model_hr_contract"/>
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
@@ -133,6 +145,10 @@
 =======
     <p>The Probation period for Contract "${object.name}" for "${object.employee_id.name}" is due to end on "${object.trial_date_end}". Please take required action .</p>    
 
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
 </div>            ]]></field>
         </record>
@@ -155,6 +171,10 @@
             <field name="email_from">${(user.email or '')|safe}</field>
             <field name="email_to">${(user.email or '')|safe}</field>            
             <field name="model_id" ref="employee_contract_RAG.model_hr_contract"/>            
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
@@ -200,6 +220,10 @@
 =======
     <p>The Mid-Probation period for Contract "${object.name}" for "${object.employee_id.name}" is due on "${object.mid_probation_date}". Please take required action .</p>    
 
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
 </div>            ]]></field>
         </record>

@@ -13,6 +13,10 @@
     'depends': ['hr_contract', 'hr_contract_init', 'hr_contract_reference', 'hr_payroll_account'],
 =======
     'depends': ['hr_contract', 'hr_contract_init', 'hr_contract_reference'],
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
     'data': [
         'hr_contract_view.xml',
@@ -23,6 +27,10 @@
         'report/probation_aeroo_report.xml', 
 =======
 #        'report/probation_aeroo_report.xml', 
+<<<<<<< HEAD
+>>>>>>> update_module
+=======
+>>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
 >>>>>>> update_module
     ],
     'installable': True,
