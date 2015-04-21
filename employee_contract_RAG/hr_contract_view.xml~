@@ -18,9 +18,7 @@
 	            <xpath expr="//form/sheet/group/group/field[@name='type_id']" position="after">
                     <field name="status" on_change="onchange_status(status)"/>
                 </xpath>
-               <!-- <xpath expr="//form/sheet/notebook/page/group/group/field[@name='advantages']" position="attributes">
-                    <attribute name="invisible">True</attribute>
-                </xpath>-->
+              
                 <xpath expr="//field[@name='employee_id']" position="replace">
                     <field name="employee_id" on_change="onchange_joingdate(employee_id)" />
                 </xpath>
