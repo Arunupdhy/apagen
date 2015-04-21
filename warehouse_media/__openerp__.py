@@ -9,11 +9,12 @@
  #       """,
         'author': 'Apagen Solution Pvt Ltd.',
         'website': 'http://www.apagen.com',
-        'depends': ['stock'
+        'depends': ['stock','purchase'
     ],
     'init_xml': [
     ],
     'data': [
+    	'security/ir.model.access.csv',
     	'views/report_stockpicking.xml',
     	'views/report_stockinventory.xml',
         'warehouse_media_view.xml',
