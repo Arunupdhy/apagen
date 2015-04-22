@@ -9,7 +9,7 @@
     'website': 'http://www.apagen.com',
     'summary': '',
     'description': """This application extends the functionality of Employee Register""",
-    'depends': ['hr', 'hr_contract','base'],
+    'depends': ['hr', 'hr_contract','base','hr_security'],
     'data': [
     	'security/ir.model.access.csv',
         'hr_view.xml',
