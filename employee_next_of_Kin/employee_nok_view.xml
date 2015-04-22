@@ -12,7 +12,7 @@
                 
                 <xpath expr="//page[@string='HR Settings']" position="before">
 				    <page string="Next of Kin">
-				        <field name="emp_nok_ids">
+				        <field name="emp_nok_ids" >
 				            <tree editable="top">
 				                <field name="surname1" required="1"/>
 				                <field name="name" required="1"/>

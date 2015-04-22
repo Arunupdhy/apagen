@@ -7,4 +7,7 @@
 "access_employee_req_items_director","req.items","model_req_items","hr_security.group_hr_director",1,1,1,1
 "access_employee_induction_officer","induction","model_induction","base.group_hr_user",1,1,1,1
 "access_employee_induction_manager","induction","model_induction","base.group_hr_manager",1,1,1,1
-"access_employee_induction_director","induction","model_induction","hr_security.group_hr_director",1,1,1,
+"access_employee_induction_director","induction","model_induction","hr_security.group_hr_director",1,1,1
+"access_employee_joining_employee","joining","model_joining","base.group_user",1,1,1,1
+"access_employee_req_item_employee","req.items","model_req_items","base.group_user",1,1,1,1
+"access_employee_induction_employee","induction","model_induction","base.group_user",1,1,1,1

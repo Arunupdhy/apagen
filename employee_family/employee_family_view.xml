@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//page[@string='HR Settings']" position="before">
-				    <page string="Family">
+				    <page string="Family" >
 				        <field name="emp_family_ids">
 				            <tree editable="top">
 				                <field name="name" required="1"/>
