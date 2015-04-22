@@ -4,12 +4,12 @@
         'version': '1.0',
         'category': 'Media Industry',
         'sequence': 14,
-        'summary': 'Media Industry',
+        'summary': '',
 #        'description': """
  #       """,
         'author': 'Apagen Solution Pvt Ltd.',
         'website': 'http://www.apagen.com',
-        'depends': [
+        'depends': ['mail',
             'base',
     ],
     'init_xml': [
