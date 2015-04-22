@@ -8,10 +8,11 @@
     """,
     "author": "Apagen Solutions Pvt. Ltd.",
     'website': 'http://www.apagen.com',
-    'depends': [
+    'depends': ['hr_security',
         'hr'
         ],
     'data': [
+        'security/ir.model.access.csv',
         'emp_joining_view.xml',
         'emp_joining_sequence.xml',
         'joining_workflow.xml',

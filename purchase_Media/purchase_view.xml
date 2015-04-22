@@ -75,7 +75,7 @@
             <field name="res_model">purchase.order</field>
             <field name="context">{}</field>
             <!-- <field name="domain">['&amp;', '|','|',('warehouse_id.officer_ids','in',uid),('warehouse_id.manager_id','=',uid), ('user_id','=',uid), ('state','in',('draft','awaiting_confirmed','sent','confirmed','refused'))]</field> -->
-            <field name="domain">[('state','in',('draft','awaiting_confirmed','sent','confirmed','refused'))]</field>
+            <field name="domain">[('state','in',('draft','awaiting_confirmed','sent','bid','confirmed','refused'))]</field>
             <field name="view_mode">tree,form,graph,calendar</field>
             <field name="search_view_id" ref="purchase.view_request_for_quotation_filter"/>
             <field name="help" type="html">
@@ -282,9 +282,9 @@
                     <button name="wkf_send_rfq" states="sent" string="Re-Send RFQ by Email" type="object" context="{'send_rfq':True}"/>
                     <button name="print_quotation" string="Print RFQ" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
                     <button name="print_quotation" string="Re-Print RFQ" type="object" states="sent" groups="base.group_user"/>
-                    <button name="purchase_approval" string="Send For Approve" states="bid" class="oe_highlight"/>
+                    <button name="purchase_approval" string="Send For Approval" states="bid" class="oe_highlight" groups="account.group_account_manager,base.group_system"/>
                     <button name="purchase_confirm" states="draft" string="Confirm Order" id="draft_confirm"/>
-                    <button name="purchase_confirm" states="approval" string="Confirm Order" class="oe_highlight" id="bid_confirm"/>
+                    <button name="purchase_confirm" states="approval" string="Confirm Order" class="oe_highlight" id="bid_confirm" />
                     <button name="picking_ok" states="except_picking" string="Manually Corrected"/>
                     <button name="invoice_ok" states="except_invoice" string="Manually Corrected"/>
                     <button name="purchase_approve" states="confirmed" string="Approve Order" class="oe_highlight" groups="purchase.group_purchase_manager"/>

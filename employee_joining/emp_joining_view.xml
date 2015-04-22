@@ -124,6 +124,6 @@
         </record>  
          
         
-        <menuitem action="open_view_joining_request_list" id="menu_joining_request" sequence="7" parent="hr.menu_hr_main"/>
+        <menuitem action="open_view_joining_request_list" id="menu_joining_request" sequence="7" parent="hr.menu_hr_main" groups="base.group_hr_user,base.group_hr_manager,hr_security.group_hr_director"/>
     </data>
 </openerp>
