@@ -24,6 +24,9 @@
                 </xpath>      
             </field>
         </record>
+        
+        <menuitem action="hr_contract.action_hr_contract" id="hr_contract.hr_menu_contract" parent="hr.menu_hr_main" name="Contracts" sequence="4" groups="base.group_hr_manager,base.group_hr_user,hr_security.group_hr_director"/>
+        
 
     </data>
 </openerp>

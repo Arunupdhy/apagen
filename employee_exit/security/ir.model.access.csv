@@ -2,3 +2,4 @@
 "access_employee_exit_officer","exit","model_exit","base.group_hr_user",1,1,1,1
 "access_employee_exit_manager","exit","model_exit","base.group_hr_manager",1,1,1,1
 "access_employee_exit_director","exit","model_exit","hr_security.group_hr_director",1,1,1,1
+"access_employee_exit_employee","exit","model_exit","base.group_user",1,1,1,1

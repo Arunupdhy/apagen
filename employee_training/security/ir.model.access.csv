@@ -5,3 +5,5 @@
 "access_employee_training_line_officer","training.line","model_training_line","base.group_hr_user",1,1,1,1
 "access_employee_training_line_manager","training.line","model_training_line","base.group_hr_manager",1,1,1,1
 "access_employee_training_line_director","training.line","model_training_line","hr_security.group_hr_director",1,1,1,
+"access_employee_training_request_employee","training.request","model_training_request","base.group_user",1,1,1,1
+"access_employee_training_line_employee","training.line","model_training_line","base.group_user",1,1,1,1

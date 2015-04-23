@@ -5,3 +5,5 @@
 "access_employee_dep_table_officer","dep_table","model_dep_table","base.group_hr_user",1,1,1,1
 "access_employee_dep_table_manager","dep_table","model_dep_table","base.group_hr_manager",1,1,1,1
 "access_employee_dep_table_director","dep_table","model_dep_table","hr_security.group_hr_director",1,1,1,
+"access_employee_medical_premium_employee","medical.premium","model_medical_premium","base.group_user",1,1,1,1
+"access_employee_dep_table_employee","dep_table","model_dep_table","base.group_user",1,1,1,1
