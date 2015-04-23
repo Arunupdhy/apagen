@@ -61,7 +61,8 @@
                                 <tr>
                                     <th><strong>Product</strong></th>
                                     <th class="text-right"><strong>Quantity</strong></th>
-                                    <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Source</strong></th></t>
+                                    <t t-if="o.picking_type_id.code != 'incoming'">
+                                    <th><strong>Source</strong></th></t>
                                     <th><strong>Barcode</strong></th>
                                     <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destination</strong></th></t>
                                 </tr>
