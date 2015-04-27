@@ -10,22 +10,11 @@ class hr_contract(osv.osv):
     _description = 'Contract'
     _inherit = ['mail.thread', 'hr.contract', 'ir.needaction_mixin']
     _columns = {
-<<<<<<< HEAD
-=======
     	'name': fields.char('Contract Reference'),
-<<<<<<< HEAD
->>>>>>> update_module
-=======
->>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
->>>>>>> update_module
         'trial_date_start': fields.date('Probation Period'),
         'visa_expire': fields.date('Visa Expiry Date'),
         'notice_period': fields.float('Notice Period (Days)'),
         'mid_probation_date': fields.date('Mid-Probation Date'),
-<<<<<<< HEAD
-    }
-    
-=======
         'joining_date': fields.date("Joining Date"),
         'status': fields.selection([('on_probation',"On Probation"),
         									  ('confirmed', "Confirmed"),
@@ -47,11 +36,6 @@ class hr_contract(osv.osv):
     def onchange_status(self, cr, uid, ids, status, context=None): 
         if status:
             return {'value' : {'status1':status }}
-<<<<<<< HEAD
->>>>>>> update_module
-=======
->>>>>>> 10e9097cc31fb76e6f4ba43e68d474db68a68799
->>>>>>> update_module
 
     def get_date_end(self, cursor, user, context=None):
         date_today = datetime.date.today()
