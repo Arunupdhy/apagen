@@ -9,12 +9,12 @@ access_employee_training_line_director,training.line,model_training_line,hr_secu
 access_employee_training_request_employee,training.request,model_training_request,base.group_user,1,1,1,0
 access_employee_training_line_employee,training.line,model_training_line,base.group_user,1,1,1,0
 
-access_employee_training_ceo,training.request,model_training_request,medical_premium.group_ceo_apagen,1,1,1,0
-access_employee_training_ceo,training.line,model_training_line,medical_premium.group_ceo_apagen,1,1,1,0
+access_employee_training_request_ceo,training.request,model_training_request,medical_premium.group_ceo_apagen,1,1,1,0
+access_employee_training_line_ceo,training.line,model_training_line,medical_premium.group_ceo_apagen,1,1,1,0
 
-access_employee_training_dep_manager,training.request,model_training_request,medical_premium.group_department_manager_apagen,1,1,1,0
-access_employee_training_dep_manager,training.line,model_training_line,medical_premium.group_department_manager_apagen,1,1,1,0
+access_employee_training_request_dep_manager,training.request,model_training_request,medical_premium.group_department_manager_apagen,1,1,1,0
+access_employee_training_line_dep_manager,training.line,model_training_line,medical_premium.group_department_manager_apagen,1,1,1,0
 
-access_employee_training_financial,training.request,model_training_request,account.group_account_manager,1,1,1,0
-access_employee_training_financial,training.line,model_training_line,account.group_account_manager,1,1,1,0
+access_employee_training_request_financial,training.request,model_training_request,account.group_account_manager,1,1,1,0
+access_employee_training_line_financial,training.line,model_training_line,account.group_account_manager,1,1,1,0
 
