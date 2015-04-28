@@ -11,7 +11,7 @@
     """,
     "author": "Apagen Solutions Pvt. Ltd.",
     'website': 'http://www.apagen.com',
-    'depends': ['hr_security',
+    'depends': ['hr_security','medical_premium',
         'hr'
         ],
     'data': [
