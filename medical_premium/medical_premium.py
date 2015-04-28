@@ -13,11 +13,11 @@ class Medical_Premium(osv.osv):
     _inherit = ['mail.thread']
     STATE_SELECTION = [
         ('draft', 'Draft'),
-        ('awaiting_finance','Awaiting Finance Approval'),
+        ('awaiting_finance','Awaiting Finance Confirmation'),
         ('awaiting_hr', 'Awaiting HR Approval'),
         ('approved', 'Approved'),
         ('refused', 'Refused'),
-        ('confirmed', 'Confirmed')
+        ('confirmed', 'Rejected')
     ]
     _columns = {
                 'name':fields.char('Medical Premium Request'),
@@ -35,7 +35,8 @@ class Medical_Premium(osv.osv):
     _defaults = {
                  'request_date':str(date.today()),
                  'state': 'draft',
-                 'employee_id': lambda self, cr, uid, context=None: uid,
+                 #'employee_id': lambda self, cr, uid, context=None: uid,
+                 #'employee_id': self.pool.get('res.users').browse(cr, uid, uid, context=context)
                  }
     def create(self, cr, uid, vals, context=None):
         if vals.get('name','/')=='/':

@@ -16,7 +16,7 @@
 				                <field name="age" required="1"/>
 				                <field name="relationship" required="1"/>
 				                <field name="studying" required="1"/>
-				                <field name="college_year" attrs="{'required':[('studying','=','yes')]}"/>
+				                <field name="college_year" attrs="{'required':[('studying','=','yes')],'readonly':[('studying','=','no')]}"/>
 				            </tree>
 				        </field>
 				    </page>

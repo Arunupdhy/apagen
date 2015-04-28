@@ -7,12 +7,13 @@
             <field name="arch" type="xml">
                 <form string="Medical Premium" version="7.0">
                 <header>
-                		<button name="state_awaiting_finance" class="oe_highlight" states="draft" string="Finance Approval"/>
-                		<button name="state_awaiting_hr" class="oe_highlight" states="awaiting_finance" string="HR Approval"/>
+                		<button name="state_awaiting_finance" class="oe_highlight" states="draft" string="Send For Confirmation"/>
+                		<button name="state_awaiting_hr" class="oe_highlight" states="awaiting_finance" string="Confirm" groups='account.group_account_manager'/>
+                		<!--<button name="state_awaiting_hr" class="oe_highlight" states="awaiting_finance" string="HR Approval" groups="account.group_account_manager"/>-->
                 		<button name="state_approved" class="oe_highlight" states="awaiting_hr" string="Approve"/>
-                		<button name="state_refused" class="oe_highlight" states="approved" string="Refuse"/>
-                		<button name="state_confirmed" class="oe_highlight" states="approved" string="Confirm"/>
-                		<button name="state_draft" class="oe_highlight" states="awaiting_finance,awaiting_hr,approved" string="Set to Draft"/>	
+                		<button name="state_refused" class="oe_highlight" states="awaiting_hr" string="Refuse"/>
+                		<button name="state_confirmed" class="oe_highlight" states="awaiting_finance" string="Reject"/>
+                		<!--<button name="state_draft" class="oe_highlight" states="awaiting_finance" string="Set to Draft"/>-->	
                         <field  name="state" widget="statusbar"  statusbar_colors='{"refused":"red"}'/>
                 </header>
                 <sheet>

@@ -7,13 +7,13 @@
             <field name="arch" type="xml">
                 <form string="Training Request" version="7.0">
                 <header>
-                		<button name="state_awaiting_hod" states="draft" class="oe_highlight" string="HOD Approval"/>
-                		<button name="state_awaiting_hr" states="awaiting_hod_approval" class="oe_highlight" string="HR Approval"/>
-                		<button name="state_awaiting_finance" states="awaiting_hr_approval" class="oe_highlight" string="Finanace Approval"/>
-                		<button name="state_awaiting_ceo" states="awaiting_finance_approval" class="oe_highlight" string="CEO Approval"/>
-                		<button name="state_approved" states="awaiting_ceo_approval" class="oe_highlight" string="Approve"/>
-                		<button name="state_refused" states="awaiting_ceo_approval" class="oe_highlight" string="Refuse"/>
-                		<button name="state_draft" states="awaiting_hod_approval,awaiting_hr_approval,awaiting_finance_approval,awaiting_ceo_approval" class="oe_highlight" string="Set to Draft"/>
+                		<button name="state_awaiting_hod" states="draft" class="oe_highlight" string="HOD Approval" groups='medical_premium.group_department_manager_apagen'/>
+                		<button name="state_awaiting_hr" states="awaiting_hod_approval" class="oe_highlight" string="HR Approval" groups='hr_security.group_hr_director'/>
+                		<button name="state_awaiting_finance" states="awaiting_hr_approval" class="oe_highlight" string="Finanace Approval" groups='account.group_account_manager'/>
+                		<button name="state_awaiting_ceo" states="awaiting_finance_approval" class="oe_highlight" string="CEO Approval" groups='medical_premium.group_ceo_apagen'/>
+                		<button name="state_approved" states="awaiting_ceo_approval" class="oe_highlight" string="Approve" />
+                		<button name="state_refused" states="awaiting_ceo_approval,awaiting_hod_approval,awaiting_hr_approval,awaiting_finance_approval" class="oe_highlight" string="Refuse"/>
+                		<!--<button name="state_draft" states="awaiting_hod_approval,awaiting_hr_approval,awaiting_finance_approval,awaiting_ceo_approval" class="oe_highlight" string="Set to Draft"/>-->
                         <field name="state" widget="statusbar"  statusbar_colors='{"refused":"red"}'/>
                 </header>
                 <sheet>
@@ -23,8 +23,9 @@
                     <group>
                         <group>
                             <field name="title"/>
+                           <!-- <field name="employee_id" on_change="onchange_employee_id(employee_id)"/>-->
+                           <field name="employee_id"/>
                             <field name="section"/>
-                            <field name="employee_id"/>
                             <field name="department_id"/>
                            <!-- <field name="request_date"/>-->
                             <field name="training_date"/>
@@ -57,7 +58,7 @@
 	                    			<tree string="Order Lines" editable="top">
 	                    				<field name="training_id" invisible="1"/>
 	                    				<!--<field name="employee_id" on_change="onchange_employee_id(employee_id)"/>-->
-		                    			<field name="employee_id" />
+		                    			<field name="employee_id" on_change="onchange_employee_id(employee_id)"/>
 		                    			<!--<field name="department_id"/>-->
 		                    			<field name="job_title"/>
 	                    			</tree>
