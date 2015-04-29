@@ -2,6 +2,9 @@
 <openerp>
     <data>
         
+        <menuitem name="Sales"
+            id="base.menu_base_partner"
+            groups="base.group_sale_salesman,base.group_sale_manager,group_financ_head,group_General_Manager,group_CEO"/>
         <record id="view_time_order_tree" model="ir.ui.view">
             <field name="name">time.order.tree</field>
             <field name="model">time.order</field>
@@ -61,7 +64,7 @@
                         <group>
                             <field name="date_order"/><!-- readonly="1"/-->                            
                             <field name="brand_id"/>                            
-                            <field name="product_id"    	/>                            
+                            <field name="product_id"/>                            
                             <field name="start_date"/>                            
                             <field name="end_date"/>                            
                             <field name="company_id" groups="base.group_multi_company" widget="selection" readonly="1"/>
@@ -125,7 +128,7 @@
 			<field name="view_id" ref="view_time_order_tree" />
         </record>
 
-        <menuitem action="action_time_order" id="menu_time_order" parent="base.menu_sales" sequence="6" groups="base.group_sale_salesman,base.group_sale_manager"/>
+        <menuitem action="action_time_order" id="menu_time_order" parent="base.menu_sales" sequence="6" groups="base.group_sale_salesman,base.group_sale_manager,time_orders.group_financ_head,group_General_Manager,group_CEO"/>
         
         <delete model="ir.ui.menu" id="sale.action_orders"/>
     </data>

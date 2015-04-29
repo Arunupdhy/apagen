@@ -116,7 +116,7 @@
 			<field name="view_id" ref="view_space_order_tree" />
         </record>
 
-        <menuitem action="action_space_order" id="menu_space_order" parent="base.menu_sales" sequence="7" groups="base.group_sale_salesman,base.group_sale_manager,time_orders.group_account_head"/>
+        <menuitem action="action_space_order" id="menu_space_order" parent="base.menu_sales" sequence="7" groups="base.group_sale_salesman,base.group_sale_manager,time_orders.group_financ_head"/><!--,time_orders.group_account_head"/-->
 
 <!--        <delete id="sale.menu_sale_quotations" model="ir.ui.menu"/>
         <delete id="sale.menu_sale_order" model="ir.ui.menu"/>-->

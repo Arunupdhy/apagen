@@ -11,8 +11,8 @@
     'description': """    """,
     'depends': ['base', 'brief_management'],
     'data': [
-        #'security/script_security.xml',
-        #'security/ir.model.access.csv',
+        'security/script_security.xml',
+        'security/ir.model.access.csv',
         'script_view.xml',
         'script_sequence.xml',                
         'script_data.xml',

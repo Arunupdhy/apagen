@@ -18,7 +18,7 @@ class order(report_sxw.rml_parse):
             return False
         return group_id in [x.id for x in self.pool.get('res.users').browse(cr, uid, uid, context=context).groups_id]
 
-report_sxw.report_sxw('report.time.order', 'time.order', 'time_orders/report/time_order.rml', parser=order, header=True)
+report_sxw.report_sxw('report.time.order', 'time.order', 'time_orders/report/time_order.rml', parser=order, header=False)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 
