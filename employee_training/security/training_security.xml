@@ -29,11 +29,11 @@
 
         <!--  ********** Rules ************* -->
        
-        <record id="brief_sales_executive_rule" model="ir.rule">
-            <field name="name">Sales Executive Brief's</field>
-            <field name="model_id" ref="model_brief"/>
-            <field name="domain_force">[('user_id.id','=',user.id)]</field>
-            <field name="groups" eval="[(4,ref('group_sales_executive'))]"/>
+        <record id="brief_tarining_rule" model="ir.rule">
+            <field name="name">Training REquest</field>
+            <field name="model_id" ref="model_training_request"/>
+            <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4,ref('base.group_user'))]"/>
         </record>
 
     </data>

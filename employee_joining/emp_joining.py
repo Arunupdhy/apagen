@@ -12,8 +12,12 @@ class Joining(osv.osv):
 	_description = 'Employee Joining'
 	_inherit = 'mail.thread'
     
-    
-    
+	def _current_employee_get(self, cr, uid, context=None):
+		ids = self.pool.get('hr.employee').search(cr, uid, [('user_id', '=', uid)], context=context)
+		if ids:
+			return ids[0]
+		return False
+
 	_columns = {
 		'state': fields.selection([('in_progress',"In Progress"),
         									  ('w_c_a', "Awaiting COO Approval"),('induction', "Induction"),('closed',"Closed")],"Status"),
@@ -33,8 +37,21 @@ class Joining(osv.osv):
 	_defaults = {
 		'joining_date': datetime.datetime.now(),
         #'state': 'in_progress',
-        #'employee_id': lambda self, cr, uid, context=None: uid,
+        'employee_id': _current_employee_get,
 	    }
+	    
+	    
+	_track = {
+		'state': {
+			'employee_joining.mt_alert_request_joining_progress': lambda self, cr, uid, obj, ctx=None: obj['state'] == 'in_progress',
+			'employee_joining.mt_alert_request_joining_coo_approval': lambda self, cr, uid, obj, ctx=None: obj['state'] == 'w_c_a',
+			'employee_joining.mt_alert_request_joning_induction': lambda self, cr, uid, obj, ctx=None: obj['state'] == 'induction',
+			'employee_joining.mt_alert_request_joning_closed': lambda self, cr, uid, obj, ctx=None: obj['state'] == 'closed',
+		},
+	}
+	
+	
+	
 	def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
 		emp_read = self.pool.get('hr.employee').browse(cr, uid, employee_id)        
 		res = {

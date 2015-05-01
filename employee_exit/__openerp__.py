@@ -19,6 +19,7 @@
         'exit_view.xml',
         'exit_sequence.xml',
         'exit_workflow.xml',
+        'employee_exit_data.xml',
     ],
     'test': [
     ],

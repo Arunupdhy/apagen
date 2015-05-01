@@ -16,6 +16,7 @@
         ],
     'data': [
         'security/ir.model.access.csv',
+        'security/training_security.xml',
         'training_request_view.xml',
         'training_request_sequence.xml',
         'training_management_workflow.xml',

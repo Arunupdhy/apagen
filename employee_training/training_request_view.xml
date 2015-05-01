@@ -24,14 +24,14 @@
                         <group>
                             <field name="title"/>
                            <!-- <field name="employee_id" on_change="onchange_employee_id(employee_id)"/>-->
-                           <field name="employee_id"/>
-                            <field name="section"/>
+                           <field name="employee_id" on_change="onchange_employee_id(employee_id)"/>
+                            <field name="section" />
                             <field name="department_id"/>
                            <!-- <field name="request_date"/>-->
                             <field name="training_date"/>
                             <field name="type"/>
                             <field name="duration"/>
-                            <field name="unknown_date"/>
+                           <!-- <field name="unknown_date"/>-->
                             <field name="venue"/>
                             <field name="facilitator"/>
                             <field name="sponsorship"/>

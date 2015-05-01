@@ -38,10 +38,11 @@ class hr_employee(osv.osv):
        'location': fields.char('Location', size=32),
        'sub_location': fields.char('Sub-Location', size=32),
        'village_market': fields.char('Village/Market', size=32),
-       'permanent_address': fields.many2one('res.partner', 'Permanent Address'),
+       'permanent_address': fields.char('Permanent Address'),
        'age':fields.integer('Age',readonly=True),
        'bank_account_id':fields.many2one('res.partner.bank', 'Bank Account No', domain="[('partner_id','=',address_home_id)]", help="Employee bank salary account"), 
        'vehicle_distance': fields.integer('Home-Work Distance.', help="In kilometers"),
+       "address_home_id":fields.char("Residential Address"),
     }
     
     def onchange_department_id(self, cr, uid, ids, department_id, context=None):
@@ -112,9 +113,11 @@ class hr_department(osv.osv):
         
 class department_section(osv.osv):
     _name = 'dep.section'
+    
     _columns = {
         'sec_id': fields.many2one('hr.department', 'Section'),
         'name': fields.char("Name",required=True),
+        'sec_manager': fields.many2one("hr.employee","Section Manager"),
     }
     
 

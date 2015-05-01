@@ -32,6 +32,13 @@ class Exit(osv.osv):
                       ('cover_not_utilized','Cover not utilized'),
                       ('no_cover','No Cover'),
                       ]
+    
+    def _current_employee_get(self, cr, uid, context=None):
+        ids = self.pool.get('hr.employee').search(cr, uid, [('user_id', '=', uid)], context=context)
+        if ids:
+            return ids[0]
+        return False
+        
     _columns = {
                  'employee_id':fields.many2one('hr.employee','Employee',required=True),
                  'job_id':fields.many2one('hr.job','Job Title',required=True),
@@ -48,8 +55,18 @@ class Exit(osv.osv):
                  'state':fields.selection(STATES,'State',)
                  }
     _defaults = {
-        #'employee_id': lambda self, cr, uid, context=None: uid,
+        'employee_id': _current_employee_get,
         }
+        
+        
+        
+    _track = {
+        'state': {
+            'employee_exit.mt_alert_request_exit_draft': lambda self, cr, uid, obj, ctx=None: obj['state'] == 'draft',
+            'employee_exit.mt_alert_request_exit_in_progress': lambda self, cr, uid, obj, ctx=None: obj['state'] == 'in_progress',
+            'employee_exit.mt_alert_request_done': lambda self, cr, uid, obj, ctx=None: obj['state'] == 'done',
+        },
+    }
 	
 	
     def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
