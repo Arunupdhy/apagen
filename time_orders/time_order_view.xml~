@@ -69,7 +69,7 @@
                             <field name="product_id"/><!--on_change="on_change_product(product_id)"/-->                           
                             <field name="start_date"/>                            
                             <field name="end_date"/>                            
-                            <field name="company_id" groups="base.group_multi_company" widget="selection" readonly="1"/>
+                            <field name="company_id" groups="base.group_multi_company" widget="selection"/>
                         </group>
                     </group>
                     <field name="order_line">
