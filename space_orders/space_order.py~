@@ -71,11 +71,13 @@ class space_order(osv.osv):
             ('draft', 'Draft'),
             ('sent', 'Quotation Sent'),
             ('cancel', 'Cancelled'),
-            ('waiting_date', 'Waiting Schedule'),
+            ('gm','Awaiting GM Approvel'),
+            ('check','Awaiting Credit Check'),
+           # ('waiting_date', 'Waiting Schedule'),
             ('progress', 'Space Order'),
-            ('manual', 'Space Order to Invoice'),
-            ('invoice_except', 'Invoice Exception'),
-            ('done', 'Done'),
+            #('manual', 'Space Order to Invoice'),
+            #('invoice_except', 'Invoice Exception'),
+           # ('done', 'Done'),
             ], 'Status', readonly=True, track_visibility='onchange',
             help="Gives the status of the quotation or sales order. \nThe exception status is automatically set when a cancel operation occurs in the processing of a document linked to the sales order. \nThe 'Waiting Schedule' status is set when the invoice is confirmed but waiting for the scheduler to run on the order date.", select=True),
         'name': fields.char('Reference', size=64, readonly=True,
@@ -86,7 +88,7 @@ class space_order(osv.osv):
         #, readonly=True, select=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}),
         'advertiser_id': fields.many2one('res.partner', 'Advertiser', required=True),
         'brand_id': fields.many2one('brand', 'Brand', required=True),
-        'contact_id': fields.many2one('res.users', 'Contact', required=True), 
+        'contact_id': fields.many2one('res.partner', 'Contact', required=True), 
         'sale_type': fields.selection([('direct', 'Direct'),
                                     ('agency', 'Agency'),('barter', 'Barter')], 'Sale Type', required='True'),     
         'user_id': fields.many2one('res.users', 'Sales Executive', required='True'),
@@ -123,6 +125,16 @@ class space_order(osv.osv):
         'name': lambda obj, cr, uid, context: '/',
         'order_policy': 'manual',
     }
+    
+    def action_abc(self, cr, uid, ids, context=None):
+     	self.write(cr, uid, ids, {'state' : 'gm'})
+     	return True
+     	
+    def action_credit(self, cr, uid, ids, context=None):
+    	print "000000000000000000000000000000"
+     	self.write(cr, uid, ids, {'state' : 'check'})
+     	print "@@@@@@@@@@@@@@@@@@@@@@@@"
+     	return True
 
     def on_change_user(self, cr, uid, ids, user_id, context=None):
         """ When changing the user, also set a section_id or restrict section id
@@ -164,6 +176,8 @@ class space_order(osv.osv):
             'default_composition_mode': 'comment',
             'mark_so_as_sent': True
         })
+        wf_service = netsvc.LocalService("workflow")
+        wf_service.trg_validate(uid, 'space.order', ids[0], 'quotation_sent', cr)
         return {
             'type': 'ir.actions.act_window',
             'view_type': 'form',
