@@ -135,6 +135,10 @@ class space_order(osv.osv):
      	self.write(cr, uid, ids, {'state' : 'check'})
      	print "@@@@@@@@@@@@@@@@@@@@@@@@"
      	return True
+     	
+    def action_reset(self, cr, uid, ids, context=None):
+     	self.write(cr, uid, ids, {'state' : 'draft'})
+     	return True
 
     def on_change_user(self, cr, uid, ids, user_id, context=None):
         """ When changing the user, also set a section_id or restrict section id
