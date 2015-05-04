@@ -1,0 +1,23 @@
+# Copyright 2014-2015 - Apagen Solutions Pvt. Ltd.
+{
+    'name': 'Radio Traffic Management',
+    'version': '1.0',
+    'category': 'Media Industry',
+    'summary': '',
+#        'description': """
+#       """,
+    'author': 'Apagen Solution Pvt Ltd.',
+    'website': 'http://www.apagen.com',
+    'depends': ['brief_management','crm_media'
+    ],
+    'data': [
+    	'traffic_sequence.xml',
+    	'traffic_view.xml',
+    ],
+    'demo': [],
+    'test': [
+    ],
+    'installable': True,
+    'auto_install': False,
+    'application': False,
+}
