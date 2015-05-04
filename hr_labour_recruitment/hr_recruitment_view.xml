@@ -11,11 +11,11 @@
         
         Delete Recruitment top-level menu and put it under our own submenu 
         <delete model="ir.ui.menu" id="base.menu_crm_case_job_req_main"/>
-        <delete model="ir.ui.menu" id="hr_recruitment.menu_crm_case_categ0_act_job"/>-->
+        <delete model="ir.ui.menu" id="hr_recruitment.menu_crm_case_categ0_act_job"/>
         <menuitem
             name="Applications"
             parent="base.menu_crm_case_job_req_main"
-            id="menu_crm_case_categ0_act_job" action="hr_recruitment.crm_case_categ0_act_job" sequence="1"/>
+            id="menu_crm_case_categ0_act_job" action="hr_recruitment.crm_case_categ0_act_job" sequence="1"/>-->
         
         <!-- Recruitment Requests -->
 
