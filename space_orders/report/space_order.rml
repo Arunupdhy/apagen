@@ -265,7 +265,7 @@
             <para style="P6">Subtotal</para>
           </td>
           <td>
-            <para style="P9">[[ formatLang(o.price_subtotal, digits=get_digits(dp='Account'), currency_obj=o.pricelist_id.currency_id) ]] </para>
+            <para style="P9">[[ formatLang(o.price_subtotal, digits=get_digits(dp='Subtotal')) or '']] <!--currency_obj=o.pricelist_id.currency_id) ]]--> </para>
           </td>
         </tr>
     </blockTable>
@@ -284,7 +284,7 @@
           <para style="terp_default_9">Net Total :</para>
         </td>
         <td>
-          <para style="terp_default_Right_9">[[ formatLang(o.amount_untaxed, dp='Account', currency_obj=o.pricelist_id.currency_id) ]]</para>
+          <para style="terp_default_Right_9">[[ formatLang(o.amount_untaxed, digits=get_digits(dp='Net Total :')) or '']]<!--, currency_obj=o.pricelist_id.currency_id) ]]--></para>
         </td>
       </tr>
       <tr>
@@ -297,7 +297,7 @@
           <para style="terp_default_9">Taxes :</para>
         </td>
         <td>
-          <para style="terp_default_Right_9">[[ formatLang(o.amount_tax, dp='Account', currency_obj=o.pricelist_id.currency_id) ]]</para>
+          <para style="terp_default_Right_9">[[ formatLang(o.amount_tax, digits=get_digits(dp='Taxes :')) or '']]<!--, currency_obj=o.pricelist_id.currency_id) ]]--></para>
         </td>
       </tr>
       <tr>
@@ -310,7 +310,7 @@
           <para style="terp_default_Bold_9">Total :</para>
         </td>
         <td>
-          <para style="terp_default_Right_9_Bold">[[ formatLang(o.amount_total, dp='Account', currency_obj=o.pricelist_id.currency_id) ]]</para>
+          <para style="terp_default_Right_9_Bold">[[ formatLang(o.amount_total, digits=get_digits(dp='Total :')) or '']]<!--, currency_obj=o.pricelist_id.currency_id) ]]--></para>
         </td>
       </tr>
     </blockTable>

@@ -2,6 +2,9 @@
 <openerp>
     <data>
         
+        <menuitem name="Sales"
+            id="base.menu_base_partner"
+            groups="base.group_sale_salesman,base.group_sale_manager,group_financ_head,group_General_Manager,group_CEO"/>
         <record id="view_time_order_tree" model="ir.ui.view">
             <field name="name">time.order.tree</field>
             <field name="model">time.order</field>
@@ -26,22 +29,24 @@
             <field name="arch" type="xml">
                 <form string="Time Orders" version="7.0">
                     <header>
-                       <button name="invoice_recreate" states="invoice_except" string="Recreate Invoice" groups="base.group_user"/>
-                       <button name="invoice_corrected" states="invoice_except" string="Ignore Exception" groups="base.group_user"/>
-                       <button name="action_quotation_send" string="Send by Email" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
-                       <button name="action_quotation_send" string="Send by Email" type="object" states="sent,progress,manual" groups="base.group_user"/>
-                       <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice"
-                            type="action" states="manual" class="oe_highlight" groups="base.group_user"/>
+                      <!-- <button name="invoice_recreate" states="invoice_except" string="Recreate Invoice" groups="base.group_user"/>
+                       <button name="invoice_corrected" states="invoice_except" string="Ignore Exception" groups="base.group_user"/>-->
+                       <button name="action_quotation_send" string="Send Quotation by Email" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                       <button name="action_quotation_send" string="Send Quotation by Email" type="object" states="sent,progress,manual" groups="base.group_user"/>
+                       <!--<button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice"
+                            type="action" states="manual" class="oe_highlight" groups="base.group_user"/>-->
                        <button name="print_quotation" string="Print" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
                        <button name="print_quotation" string="Print" type="object" states="sent,progress,manual" groups="base.group_user"/>
                        <button name="action_button_confirm" states="draft" string="Confirm Order" type="object" groups="base.group_user"/>
-                       <button name="action_button_confirm" states="sent" string="Confirm Order" class="oe_highlight" type="object" groups="base.group_user"/>
-                       <button name="copy_quotation" states="cancel" string="New Copy of Quotation" type="object"/>
+                       <button name="action_button_confirm" states="check" string="Confirm Order" class="oe_highlight" type="object" groups="base.group_user"/>
+                       <!--<button name="copy_quotation" states="cancel" string="New Copy of Quotation" type="object"/>-->
                        <button name="cancel" states="draft,sent" string="Cancel Quotation" groups="base.group_user"/>
                        <button name="action_cancel" states="manual,progress" string="Cancel Order" type="object" groups="base.group_user"/>
                        <button name="invoice_cancel" states="invoice_except" string="Cancel Order" groups="base.group_user"/>
-
-                       <field name="state" widget="statusbar" statusbar_visible="draft,sent,progress" statusbar_colors='{"invoice_except":"red","waiting_date":"blue"}'/>
+					    <button name="action_abc" states="sent" string="Submit For Approval"/>
+                       <button name="abc" states="gm" string="Submit For Credit Check"/>
+                       <button name="action_reset" states="check" string="Reset To Draft"/>
+                       <field name="state" widget="statusbar" statusbar_visible="draft,sent,gm,check,progress" statusbar_colors='{"invoice_except":"red","waiting_date":"blue"}'/>
                     </header>
 <!--                    <sheet>-->
                     <h1>
@@ -53,7 +58,7 @@
                         <group>
                             <field name="partner_id" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1}" options='{"always_reload": True}'/>
                             <field name="advertiser_id" domain="[('is_advertiser','=',True)]"/>
-                            <field name="contact_id"/>
+                            <field name="contact_id" domain="[('is_company','=',False),('is_agency','=',False)]"/>
                             <field name="user_id" on_change="on_change_user(user_id, context)"/>
                             <field name="section_id" widget="selection"/>
                             <field name="sale_type"/>
@@ -61,7 +66,7 @@
                         <group>
                             <field name="date_order"/><!-- readonly="1"/-->                            
                             <field name="brand_id"/>                            
-                            <field name="product_id"    	/>                            
+                            <field name="product_id"/><!--on_change="on_change_product(product_id)"/-->                           
                             <field name="start_date"/>                            
                             <field name="end_date"/>                            
                             <field name="company_id" groups="base.group_multi_company" widget="selection" readonly="1"/>
@@ -125,7 +130,7 @@
 			<field name="view_id" ref="view_time_order_tree" />
         </record>
 
-        <menuitem action="action_time_order" id="menu_time_order" parent="base.menu_sales" sequence="6" groups="base.group_sale_salesman,base.group_sale_manager"/>
+        <menuitem action="action_time_order" id="menu_time_order" parent="base.menu_sales" sequence="6" groups="base.group_sale_salesman,base.group_sale_manager,time_orders.group_financ_head,group_General_Manager,group_CEO"/>
         
         <delete model="ir.ui.menu" id="sale.action_orders"/>
     </data>
