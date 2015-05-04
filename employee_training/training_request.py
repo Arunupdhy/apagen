@@ -28,11 +28,20 @@ class Training_Request(osv.osv):
                  ('awaiting_finance_approval','Awaiting Finance Approval'),
                  ('awaiting_ceo_approval','Awaiting CEO Approval'),
                  ('approved','Approved'),
-                 ('refused','Declined'),
+                 ('refused','Refused'),
                  ]
+    
+   
+    def _current_employee_get(self, cr, uid, context=None):
+         ids = self.pool.get('hr.employee').search(cr, uid, [('user_id', '=', uid)], context=context)
+         if ids:
+             return ids[0]
+         return False
+    
     _columns = {
                 'employee_id':fields.many2one('hr.employee','Section Manager'),
-                'section':fields.char('Section'),
+                'section':fields.many2one('dep.section','Section'),
+                #'section':fields.many('Section'),
                 'department_id':fields.many2one('hr.department','Department'),
                 #'request_date':fields.datetime('Request Date'),
                 'training_date':fields.datetime('Training Date'),
@@ -40,7 +49,7 @@ class Training_Request(osv.osv):
                 'name':fields.char('Training Request'),
                 'title':fields.char('Training Title',required=True),
                 'duration':fields.date('Training Duration',required=True),
-                'unknown_date':fields.date('Unknown',required=True),
+                #'unknown_date':fields.date('Unknown',required=True),
                 'venue':fields.char('Venue',required=True),
                 'facilitator':fields.char('Training Facilitator',required=True),
                 'sponsorship':fields.char('Sponsorship (if any)',required=True),
@@ -65,7 +74,33 @@ class Training_Request(osv.osv):
                 }
     _defaults={
                'state':'draft',
+               'employee_id':_current_employee_get,
                }
+    
+    #def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
+    '''emp_read = self.pool.get('hr.employee').read(cr, uid, employee_id, ['department_id','company_id'], context=context)
+        res = {
+               'department_id':emp_read.get('department_id') and emp_read.get('department_id')[0],
+               'company_id':emp_read.get('company_id') and emp_read.get('company_id')[0],
+                }'''
+    '''emp_read = self.pool.get('hr.department').browse(cr, uid, employee_id)
+        print"------------------------------",emp_read        
+        res = {
+               'employee_id':emp_read.manager_id,
+               'section': emp_read.section_ids,
+               #'department_id':emp_read.department_id,
+               #'company_id':emp_read.company_id,
+                }        
+        return {'value':res}'''
+    
+    
+    def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
+        emp_read = self.pool.get('hr.employee').browse(cr, uid, employee_id)        
+        res = {
+               'department_id':emp_read.department_id,
+               'section':emp_read.section,
+                }
+        return {'value':res}
     
     def state_draft(self, cr, uid, ids, context=None):
         self.write(cr, uid, ids, {'state':'draft'}, context=context)
@@ -101,11 +136,12 @@ class Training_Lines(osv.osv):
                 'training_id':fields.many2one('training.request','Training Id'),
                 'employee_id':fields.many2one('hr.employee','Employees'),
                 #'department_id':fields.many2one('hr.department','Departments')
-                'job_title':fields.many2one('hr.department','Job Title'),
+                'job_title':fields.many2one('hr.job','Job Title'),
                 }
-    '''def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
-        emp_read = self.pool.get('hr.employee').read(cr, uid, employee_id, ['department_id'], context=context)
+    def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
+        emp_read = self.pool.get('hr.employee').browse(cr, uid, employee_id)
         res = {
-               'department_id':emp_read.get('department_id') and emp_read.get('department_id')[0]
-                }
-        return {'value':res}'''
+            'department_id':emp_read.department_id,
+            'job_title':emp_read.job_id,
+        }
+        return {'value':res}

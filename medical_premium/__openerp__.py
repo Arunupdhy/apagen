@@ -11,10 +11,11 @@
     """,
     "author": "Apagen Solutions Pvt. Ltd.",
     'website': 'http://www.apagen.com',
-    'depends': ['hr_security',
+    'depends': ['hr_security','account',
         'hr'
         ],
     'data': [
+        'security/medical_security.xml',
         'security/ir.model.access.csv',
         'medical_premium_view.xml',
         'medical_premium_sequence.xml',

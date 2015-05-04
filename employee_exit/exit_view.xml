@@ -9,7 +9,7 @@
                 	<header>
                 		<button name="state_in_progress" states="draft" class="oe_highlight" string="In Progress"/>
             			<button name="state_done" states="in_progress" class="oe_highlight" string="Complete"/>
-        				<button name="state_draft" states="in_progress" string="Set to Draft"/>
+        				<!--<button name="state_draft" states="in_progress" string="Set to Draft"/>-->
                 		<field  name="state" widget="statusbar"/>
                 	</header>
                 <sheet>
@@ -19,9 +19,9 @@
                     <group>
                         <group>
                           <!--  <field name="employee_id" on_change="onchange_employee_id(employee_id)"/>-->
-                          	<field name="employee_id"/>
-                            <field name="job_id"/>
+                          	<field name="employee_id" on_change="onchange_employee_id(employee_id)"/>
                             <field name="department_id"/>
+                            <field name="job_id"/>
 							<field name="type"/>
                             <field name="notification_date"/>
                         </group>

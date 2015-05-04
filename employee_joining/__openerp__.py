@@ -12,10 +12,12 @@
         'hr'
         ],
     'data': [
+    	'security/joining_coo_security.xml',
         'security/ir.model.access.csv',
         'emp_joining_view.xml',
         'emp_joining_sequence.xml',
         'joining_workflow.xml',
+        'employee_joining_data.xml',
     ],
     'test': [
     ],

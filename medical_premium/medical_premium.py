@@ -13,12 +13,19 @@ class Medical_Premium(osv.osv):
     _inherit = ['mail.thread']
     STATE_SELECTION = [
         ('draft', 'Draft'),
-        ('awaiting_finance','Awaiting Finance Approval'),
+        ('awaiting_finance','Awaiting Finance Confirmation'),
         ('awaiting_hr', 'Awaiting HR Approval'),
         ('approved', 'Approved'),
         ('refused', 'Refused'),
-        ('confirmed', 'Confirmed')
+        ('confirmed', 'Rejected')
     ]
+    
+    def _current_employee_get(self, cr, uid, context=None):
+        ids = self.pool.get('hr.employee').search(cr, uid, [('user_id', '=', uid)], context=context)
+        if ids:
+            return ids[0]
+        return False
+    
     _columns = {
                 'name':fields.char('Medical Premium Request'),
                 'employee_id':fields.many2one('hr.employee','Employee',required=True),
@@ -35,12 +42,18 @@ class Medical_Premium(osv.osv):
     _defaults = {
                  'request_date':str(date.today()),
                  'state': 'draft',
-                 'employee_id': lambda self, cr, uid, context=None: uid,
+                 #'employee_id': lambda self, cr, uid, context=None: uid,
+                 'employee_id': _current_employee_get,
+                 #'employee_id': "abc",
                  }
+                 
+    
+    
     def create(self, cr, uid, vals, context=None):
         if vals.get('name','/')=='/':
             vals['name'] = self.pool.get('ir.sequence').get(cr, uid, 'medical.premium') or '/'
         return super(Medical_Premium, self).create(cr, uid, vals, context=context)
+        
     
     def copy(self, cr, uid, id, default=None, context=None):
         if not default:
@@ -64,6 +77,7 @@ class Medical_Premium(osv.osv):
                'company_id':emp_read.company_id,
                 }        
         return {'value':res}
+        
     
     def state_draft(self, cr, uid, ids, context=None):
         self.write(cr, uid, ids, {'state':'draft'}, context=context)

@@ -32,6 +32,13 @@ class Exit(osv.osv):
                       ('cover_not_utilized','Cover not utilized'),
                       ('no_cover','No Cover'),
                       ]
+    
+    def _current_employee_get(self, cr, uid, context=None):
+        ids = self.pool.get('hr.employee').search(cr, uid, [('user_id', '=', uid)], context=context)
+        if ids:
+            return ids[0]
+        return False
+        
     _columns = {
                  'employee_id':fields.many2one('hr.employee','Employee',required=True),
                  'job_id':fields.many2one('hr.job','Job Title',required=True),
@@ -47,18 +54,28 @@ class Exit(osv.osv):
                  'emp_cert_issued':fields.selection([('yes','Yes'),('no','No')],'Employment Certification Issued',required=True),
                  'state':fields.selection(STATES,'State',)
                  }
-    #def onchange_employee_id(self, cr, uid, ids, emp_id, context=None):
-        #emp_read = self.pool.get('hr.employee').read(cr, uid, emp_id,['job_id','department_id'], context=context)
-        #emp_read = self.pool.get('hr.employee').browse(cr, uid, emp_id)
-        #print emp_read
-        #print emp_read.department_id
-        #res = {
-               #''''job_id':emp_read.get('job_id') and emp_read.get('job_id')[0],
-               #'department_id':emp_read.get('department_id') and emp_read.get('department_id')[0],'''
-               #'department_id':emp_read.department_id,
-               #'job_id':emp_read.job_id,
-               #}
-        #return {'value':res}
+    _defaults = {
+        'employee_id': _current_employee_get,
+        }
+        
+        
+        
+    _track = {
+        'state': {
+            'employee_exit.mt_alert_request_exit_draft': lambda self, cr, uid, obj, ctx=None: obj['state'] == 'draft',
+            'employee_exit.mt_alert_request_exit_in_progress': lambda self, cr, uid, obj, ctx=None: obj['state'] == 'in_progress',
+            'employee_exit.mt_alert_request_done': lambda self, cr, uid, obj, ctx=None: obj['state'] == 'done',
+        },
+    }
+	
+	
+    def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
+        emp_read = self.pool.get('hr.employee').browse(cr, uid, employee_id)
+        res = {
+            'department_id':emp_read.department_id,
+            'job_id':emp_read.job_id,
+        }
+        return {'value':res}    
     
     def state_draft(self, cr, uid, ids, context=None):
         self.write(cr, uid, ids, {'state':'draft'}, context=context)
