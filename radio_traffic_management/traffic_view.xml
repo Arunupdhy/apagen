@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-    
+    	
 		<menuitem id="menu_rag_traffic_apagen"
-			name="Traffic" parent="brief_management.menu_rag_radio_apagen" sequence="5"/>
+			name="Traffic" parent="brief_management.menu_rag_radio_apagen" groups="account.group_account_invoice,base.group_sale_salesman_all_leads,base.group_sale_manager,base.group_sale_salesman" sequence="5"/>
 			
 <!--#################################### Traffic Form View ################################-->
 		<record id="view_traffic_form_apagen_rag" model="ir.ui.view">
@@ -14,8 +14,9 @@
                 
 <!--################################### Traffic Header ##################################-->
 					<header>
-						<button name="" string="Validate" states="draft" class="oe_highlight"/>
-						<button name="" string="Cancel" states="draft" class="oe_highlight"/>
+						<button name="traffic_scheduled" string="Validate" states="draft" class="oe_highlight"/>
+						<button name="traffic_executed" string="Executed" states="scheduled" class="oe_highlight"/>
+						<button name="traffic_cancel" string="Cancel" states="executed" class="oe_highlight"/>
 						<field name="state" widget="statusbar" statusbar_visible="draft,scheduled,executed,cancelled"/>
 					</header>
                 	<sheet>
@@ -29,7 +30,7 @@
                 				<field name="create_date"/>
                 			</group>
                 			<group>
-                				<field name="brand"/>
+                				<field name="brand_id"/>
                 				<field name="responsible"/>
                 			</group>
                 		</group>
@@ -42,7 +43,8 @@
 								        <field name="time_end"/>                            
 								        <field name="product"/>                                                        
 								        <field name="description"/>                            
-								        <field name="advertiser"/>                            
+								        <field name="advertiser"/> 
+								        <field name="cart"/>                           
 								        <field name="remark"/>                            
 								        <field name="status"/>                            
 		                    		</tree>
@@ -61,13 +63,42 @@
             <field name="arch" type="xml">
                 <tree string="Traffic">
                     <field name="ref"/>
-                    <field name="brand"/>
+                    <field name="brand_id"/>
                     <field name="traffic_date"/>
                     <field name="create_date"/>                            
                     <field name="responsible"/>
+                    <field name="company_id"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
+        
+<!--################################## Traffic Search View ############################### -->
+		<record id="view_traffic_form_filter_apagen" model="ir.ui.view">
+			<field name="name">traffic.select</field>
+			<field name="model">daily.traffic</field>
+			<field name="arch" type="xml">
+				<search string="Traffic Filter">
+					<filter string="Draft" name="draft" domain="[('state','=', 'draft')]" />
+					<filter string="Scheduled" name="scheduled"
+						domain="[('state','=', 'scheduled')]" />
+					<filter string="Executed" name="executed"
+						domain="[('state','=', 'Executed')]" />
+
+					<group expand="0" string="Group By">
+						<filter string="Brand" icon="terp-personal" domain="[]"
+							context="{'group_by':'brand'}" />
+						<filter string="Responsible" icon="terp-personal" domain="[]"
+							context="{'group_by':'responsible'}" />
+						<filter string="Company" icon="terp-personal"
+							domain="[]" context="{'group_by':'company_id'}" />
+						<filter string="Status" icon="terp-personal"
+							domain="[]" context="{'group_by':'state'}" />
+
+					</group>
+				</search>
+			</field>
+		</record>
         
 <!--############################# Traffic Action ####################################-->
 	<record id="action_traffic_apagen" model="ir.actions.act_window">

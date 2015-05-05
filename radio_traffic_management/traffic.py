@@ -15,10 +15,11 @@ class daily_traffic(osv.osv):
             ('cancelled','Cancelled'),
             ], 'Status', readonly=True),
     'ref': fields.char('Reference'),
-    'brand': fields.many2one('brand','Brand',required=1),
+    'brand_id': fields.many2one('brand','Brand',required=1),
     'create_date': fields.datetime('Creation Date',readonly=1),
     'traffic_date': fields.date('Traffic Date',required=1),
     'responsible': fields.many2one('res.users','Responsible',required=1),
+    'company_id': fields.many2one('res.company', 'Company', required=False),
     'traffic_line': fields.one2many('daily.traffic.lines', 'traffic_id', 'Traffic Lines'),
     }
     _defaults = {
@@ -26,8 +27,21 @@ class daily_traffic(osv.osv):
     	'traffic_date': fields.date.context_today,
         'state': 'draft',
     	'responsible': lambda obj, cr, uid, context: uid,
+    	'company_id': lambda s, cr, uid, c: s.pool.get('res.company')._company_default_get(cr, uid, 'daily.traffic', context=c),
     	#self.write(cr, uid, ids,{'ref': self.pool.get('ir.sequence').get(cr, uid, 'daily.traffic')or '/'},context=context)
     }
+    
+    def traffic_scheduled(self, cr, uid, ids, context=None):
+     	self.write(cr, uid, ids, {'state' : 'scheduled','ref': self.pool.get('ir.sequence').get(cr, uid, 'daily.traffic')or '/'})
+     	return True
+     	
+    def traffic_executed(self, cr, uid, ids, context=None):
+     	self.write(cr, uid, ids, {'state' : 'executed'})
+     	return True
+     	
+    def traffic_cancel(self, cr, uid, ids, context=None):
+     	self.write(cr, uid, ids, {'state' : 'cancelled'})
+     	return True
     	
 class daily_traffic_lines(osv.osv):
     _name = "daily.traffic.lines"
@@ -45,6 +59,7 @@ class daily_traffic_lines(osv.osv):
     'time_end': fields.datetime('Time End',required=1),
     'product': fields.many2one('product.product','Product',required=1),
     'description': fields.char('Description',required=1),
+    'cart': fields.integer('Cart No.'),
     'advertiser': fields.many2one('res.partner','Advertiser',required=1),
     'remark': fields.char('Remarks'),
     }

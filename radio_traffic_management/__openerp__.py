@@ -11,7 +11,10 @@
     'depends': ['brief_management','crm_media'
     ],
     'data': [
+    	'security/traffic_security.xml',
+    	'security/ir.model.access.csv',
     	'traffic_sequence.xml',
+    	'traffic_workflow.xml',
     	'traffic_view.xml',
     ],
     'demo': [],
