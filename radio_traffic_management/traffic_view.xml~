@@ -3,7 +3,7 @@
     <data>
     	
 		<menuitem id="menu_rag_traffic_apagen"
-			name="Traffic" parent="brief_management.menu_rag_radio_apagen" groups="account.group_account_invoice,base.group_sale_salesman_all_leads,base.group_sale_manager,base.group_sale_salesman" sequence="5"/>
+			name="Traffic" parent="brief_management.menu_rag_radio_apagen" groups="account.group_account_invoice,base.group_sale_manager" sequence="5"/>
 			
 <!--#################################### Traffic Form View ################################-->
 		<record id="view_traffic_form_apagen_rag" model="ir.ui.view">
