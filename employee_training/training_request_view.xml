@@ -24,6 +24,7 @@
                         <group>
                             <field name="title"/>
                            <!-- <field name="employee_id" on_change="onchange_employee_id(employee_id)"/>-->
+                           <field name='user_id' invisible='1'/>
                            <field name="employee_id" on_change="onchange_employee_id(employee_id)"/>
                             <field name="section" />
                             <field name="department_id"/>

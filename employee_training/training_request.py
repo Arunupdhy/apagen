@@ -40,6 +40,7 @@ class Training_Request(osv.osv):
     
     _columns = {
                 'employee_id':fields.many2one('hr.employee','Section Manager'),
+                'user_id':fields.many2one('res.users',"Employee"),
                 'section':fields.many2one('dep.section','Section'),
                 #'section':fields.many('Section'),
                 'department_id':fields.many2one('hr.department','Department'),
@@ -75,6 +76,7 @@ class Training_Request(osv.osv):
     _defaults={
                'state':'draft',
                'employee_id':_current_employee_get,
+               'user_id': lambda self, cr, uid, context=None: uid,
                }
     
     #def onchange_employee_id(self,cr, uid, ids, employee_id, context=None):
@@ -98,7 +100,7 @@ class Training_Request(osv.osv):
         emp_read = self.pool.get('hr.employee').browse(cr, uid, employee_id)        
         res = {
                'department_id':emp_read.department_id,
-               'section':emp_read.section,
+               #'section':emp_read.section,
                 }
         return {'value':res}
     
