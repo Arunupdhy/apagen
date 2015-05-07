@@ -1,0 +1,35 @@
+from osv import osv, fields
+from datetime import date
+
+class script(osv.osv):
+    _name = "script"
+    _columns = {
+        'partner_id': fields.many2one('res.partner', 'Customer'),
+        'advertiser_id': fields.many2one('res.partner', 'Advertiser'),
+        'writer_id': fields.many2one('res.users', 'Writer'),
+        'script_no':fields.char('Script No.'),
+        'date':fields.datetime('Date'),
+        'user_id': fields.many2one('res.users', 'Sales Executive'),
+        'brand_id': fields.many2one('brand', 'Brand'),
+        'state': fields.selection([
+            ('draft', 'Draft'),
+            ('awaiting_approval', 'Awaiting Approval'),
+            ('approved', 'Approved'),
+            ('cancel', 'Cancelled'),
+            ('pending', 'Pending'),
+            ], 'Status', readonly=True),
+        'notes': fields.text('Notes', states={'draft': [('readonly', False)]}),     
+    }
+    
+    _defaults = {
+        'user_id': lambda obj, cr, uid, context: uid,
+        'writer_id': lambda obj, cr, uid, context: uid,
+        'date': fields.date.context_today,
+        'state': 'draft'
+    }
+
+    def submit_approval(self, cr, uid, ids, context=None):
+        seq = self.pool.get('ir.sequence').get(cr, uid, 'script') or '/'
+        self.write(cr, uid, ids, {'state': 'awaiting_approval', 'script_no': seq})
+        return True
+        
