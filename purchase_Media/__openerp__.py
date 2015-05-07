@@ -11,6 +11,7 @@
     'description': """This application modifies Purchase Management for Media Industry""",
     'depends': ['purchase', 'purchase_requisition'],
     'data': [
+    	'security/ir.model.access.csv',
         'purchase_view.xml',
         'purchase_report.xml',
 		#'viwes/report_purchaseorder.xml',    		
