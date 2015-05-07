@@ -186,8 +186,43 @@ class time_order(osv.osv):
         'order_policy': 'manual',
     }
     
+    '''def daily_trafic(self, cr, uid, ids, context=None):
+		list_ids = self.browse(cr, uid, ids, context)
+		print ">>>>>>>>>", list_ids
+		for data in list_ids:
+			print "XXXXXXXXXXXXXXXXXXXXXXXXXX", data.brand
+        f=self.pool.get('tab.info').browse(cr, uid, context['active_id'])
+		if data.goal == True:
+			tab_info_obj = self.pool.get('player.reg')
+			for item in f:
+				data_id = tab_info_obj.create(cr, uid, {'goal': data.t_goal}, context=None)
+		return True'''
+		
+    
     def action_abc(self, cr, uid, ids, context=None):
      	self.write(cr, uid, ids, {'state' : 'gm'})
+     	list_ids = self.browse(cr, uid, ids, context)
+        print ">>>>>>>>>", list_ids
+        for data in list_ids:
+			print "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", data.date_order
+			print "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB", data.brand_id
+			print "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC", data.user_id
+			print "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD", data.product_id
+			print "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", data.advertiser_id
+        y = self.pool.get('daily.traffic')
+        data_dic ={ 
+        	'create_id': data.date_order,
+        	'brand_id': data.brand_id.id,
+        	'responsible': data.user_id.id,
+        	}
+        data_id = y.create(cr, uid, data_dic)
+        x = self.pool.get('daily.traffic.lines')
+        new_dic = {
+			'traffic_id': data_id,        		
+			#'product': data.product_id.name,
+        	'advertiser': data.advertiser_id.id
+        }
+        x.create(cr, uid, new_dic)
      	return True
      	
     def action_credit(self, cr, uid, ids, context=None):
@@ -199,16 +234,9 @@ class time_order(osv.osv):
     def action_reset(self, cr, uid, ids, context=None):
      	self.write(cr, uid, ids, {'state' : 'draft'})
      	return True
+     	
 
     
-    '''def on_change_product(self, cr, uid, ids, product_id, context=None):
-		if product_id:
-			y=self.pool.get('time.order.line')
-			print "aaaaaaaaaaaaaaaaaaaaaaaaaaa", y
-			#y.write(cr, uid, ids, {'product': product_id}, context=context)
-			return {'value' : {'product': product_id}}
-		#return True'''
-
     def on_change_user(self, cr, uid, ids, user_id, context=None):
         """ When changing the user, also set a section_id or restrict section id
             to the ones user_id is member of. """
@@ -233,7 +261,7 @@ class time_order(osv.osv):
         assert len(ids) == 1, 'This option should only be used for a single id at a time.'
         ir_model_data = self.pool.get('ir.model.data')
         try:
-            template_id = ir_model_data.get_object_reference(cr, uid, 'sale', 'email_template_edi_sale')[1]
+            template_id = ir_model_data.get_object_reference(cr, uid, 'time_orders', 'sale.email_template_edi_sale')[1]
         except ValueError:
             template_id = False
         try:
